@@ -1,0 +1,138 @@
+.dosis-dosis {
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: 'Dosis', sans-serif;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* When visible */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variations */
+.fade-left { transform: translateX(-40px); }
+.fade-right { transform: translateX(40px); }
+.fade-up { transform: translateY(40px); }
+.fade-down { transform: translateY(-40px); }
+
+@font-face {
+  font-family: 'Acorn';
+  src: url('./fonts/acorn.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gloock';
+  src: url('./fonts/Gloock.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('./fonts/InstrumentSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, h3 {
+  font-family: 'Instrument Sans', sans-serif;
+}
+    .nav-link {
+      position: relative;
+      transition: all 0.3s;
+    }
+    .nav-link:hover {
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(to right, #ec4899, #a78bfa, #818cf8);
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 2px;
+      background-image: linear-gradient(to right, #ec4899, #a78bfa, #818cf8);
+      transition: all 0.3s;
+    }
+/* Mobile menu visibility control - Opening from right */
+        #mobile-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.3s ease-in-out;
+            display: flex !important;
+            flex-direction: column;
+        }
+
+        #mobile-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        /* Hamburger icon animations */
+        .hamburger-lines {
+            display: block;
+            height: 26px;
+            width: 32px;
+            position: relative;
+        }
+        
+        .hamburger-lines .line {
+            display: block;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            background: white;
+            position: absolute;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .hamburger-lines .line:nth-child(1) {
+            top: 6px;
+        }
+        
+        .hamburger-lines .line:nth-child(2) {
+            top: 12px;
+        }
+        
+        .hamburger-lines .line:nth-child(3) {
+            top: 18px;
+        }
+        
+        /* Animation for when menu is active */
+        #mobile-toggle.active .hamburger-lines .line:nth-child(1) {
+            top: 12px;
+            transform: rotate(135deg);
+        }
+        
+        #mobile-toggle.active .hamburger-lines .line:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        
+        #mobile-toggle.active .hamburger-lines .line:nth-child(3) {
+            top: 12px;
+            transform: rotate(-135deg);
+        }
+

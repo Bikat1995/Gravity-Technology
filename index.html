@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gravity Technology</title>
+    <meta name="description" content="Unlock seamless, secure, and instant financial transactions with Zenpay. Manage, send, and receive money effortlessly and integrate multiple financial services." />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+            colors: {
+              primary: {
+              50:  '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95'
+              }
+            },
+            boxShadow: {
+              soft: '0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 8px rgba(16, 24, 40, 0.08)'
+            },
+            backgroundImage: {
+              'hero-grid': "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px)",
+              'hero-gradient': 'linear-gradient(180deg, rgba(9, 17, 28, 0.85) 0%, rgba(9, 17, 28, 0.92) 30%, rgba(9, 17, 28, 1) 100%)',
+              'brand-gradient': 'linear-gradient(90deg, #63E 0%, #33D1FF 50%, #A6F29A 100%)',
+              'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
+              'cta-gradient': 'linear-gradient(180deg, rgba(9,17,28,1) 0%, rgba(9,17,28,0.95) 100%)'
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      /* Subtle grid overlay for hero */
+      .hero-bg {
+        background-color: #0b1524;
+        background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+      .glass {
+        backdrop-filter: saturate(140%) blur(8px);
+        -webkit-backdrop-filter: saturate(140%) blur(8px);
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .soft-card {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      /* Animation styles */
+      .animate-section {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease-out;
+      }
+      .animate-section.from-right {
+        transform: translateX(50px);
+      }
+      .animate-section.from-bottom {
+        transform: translateY(50px);
+      }
+      .animate-section.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+      /* Carousel styles */
+      .testimonial-slide {
+        display: none;
+      }
+      .testimonial-slide.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-slate-900 selection:bg-primary-200 selection:text-slate-900">
+  <!-- HERO + NAVBAR -->
+  <header class="hero-bg relative h-screen">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 h-screen w-full bg-cover bg-center" style="background-image: url('./fonts/image_fx_\ \(43\).jpg');"></div>
+    
+    <!-- NAVBAR -->
+    <nav id="main-nav"
+            class="absolute top-2 w-[95%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3">
+            <div class="max-w-6xl mx-auto w-full flex items-center justify-between relative">
+                <!-- Logo -->
+                <div class="flex items-center gap-8">
+                    <a href="#" class="flex items-center gap-2">
+                    <span class="inline-flex h-40 w-40 items-center justify-center">
+                    <img src="Gravity_White.png" alt="Logo" class="h-12 w-auto object-contain">
+                </span>
+            </a>
+    </div>
+
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/80">
+      <a href="#Services" class="nav-link">Services</a>
+      <a href="#Works" class="nav-link">Our Works</a>
+      <a href="#Products" class="nav-link">Our Products</a>
+      <a href="#Clients" class="nav-link">Clients</a>
+      <a href="#Contact" class="nav-link">Contact</a>
+    </div>
+
+
+<!-- Mobile Menu Button -->
+                <button id="mobile-toggle"
+                    class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-white relative z-[50] cursor-pointer">
+                    <!-- Animated Hamburger Icon -->
+                    <div class="hamburger-lines">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-screen bg-purple-800/95 text-white z-30">
+            <!-- The button to close the menu is now the animated hamburger button itself -->
+            <div class="p-6 flex flex-col gap-4 text-lg mt-16">
+                <a href="#Services" class="block py-2 border-b border-gray-800 hover:text-white transition-colors">Services</a>
+                <a href="#Works" class="block py-2 border-b border-gray-800 hover:text-white transition-colors">Our Works</a>
+                <a href="#Products" class="block py-2 border-b border-gray-800 hover:text-white transition-colors">Our Products</a>
+                <a href="#Clients" class="block py-2 border-b border-gray-800 hover:text-white transition-colors">Clients</a>
+                <a href="#Contact" class="block py-2 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileToggle = document.getElementById("mobile-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            // Toggle menu on hamburger click. The 'active' class triggers the 'X' animation.
+            mobileToggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle("show");
+                mobileToggle.classList.toggle("active");
+                
+                // Toggle body scroll
+                if (mobileMenu.classList.contains("show")) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = mobileMenu.querySelectorAll("a");
+            menuLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.remove("show");
+                    mobileToggle.classList.remove("active");
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileToggle.contains(e.target) && mobileMenu.classList.contains("show")) {
+                    mobileMenu.classList.remove("show");
+                    mobileToggle.classList.remove("active");
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+    <script> window.addEventListener("scroll", function () { 
+      const nav = document.getElementById("main-nav"); 
+      const hero = document.querySelector("header"); 
+      const heroHeight = hero.offsetHeight; 
+    if (window.scrollY > heroHeight - 80) { 
+        nav.classList.remove("bg-transparent"); 
+        nav.classList.add("bg-primary-800/80"); 
+        } else { nav.classList.remove("bg-primary-800/80"); 
+        nav.classList.add("bg-transparent"); 
+        } 
+      }); 
+    </script>
+
+<!-- HERO CONTENT -->
+<section class="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 bg-[url('your-image.jpg')] bg-cover bg-center"></div>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex justify-center animate-fade-in-down">
+      <div class="glass text-xs text-slate-200/90 px-3 py-1.5 rounded-full">
+        Empowering your business through intelligent solutions
+      </div>
+    </div>
+    <h1 class="mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white animate-fade-in-up delay-200">
+      Building Smarter
+      <span class="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent">
+        Software
+      </span>
+    </h1>
+    <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white animate-fade-in-up delay-300">
+      for a Smarter Future
+    </h1>
+    <p class="mt-10 max-w-2xl mx-auto text-white text-sm sm:text-base animate-fade-in-up delay-500">
+      At Gravity, we provide intelligent solutions for a data-driven world. We craft bespoke strategies to propel your business forward, helping you experience the pull of true innovation and measurable growth.
+    </p>
+    <div class="mt-14 flex items-center justify-center gap-3 animate-fade-in-up delay-700">
+      <a href="#Contact"
+         class="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-purple-500 to-purple-600 
+                hover:from-purple-400 hover:to-purple-500 text-white text-sm font-medium px-4 py-2.5 
+                shadow-[0_0_10px_rgba(168,85,247,0.6)] hover:shadow-[0_0_20px_rgba(168,85,247,0.8)] 
+                transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Launch Your Project
+      </a>
+      <a href="#Services"
+         class="inline-flex items-center rounded-md border border-purple-500/40 hover:border-purple-400 
+                text-white/90 hover:text-white text-sm font-medium px-4 py-2.5 transition-all duration-300">
+        Explore Services
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+
+    reveals.forEach(el => {
+      const revealTop = el.getBoundingClientRect().top;
+      if (revealTop < windowHeight - revealPoint) {
+        el.classList.add("active");
+      } else {
+        el.classList.remove("active"); // remove if you want it to replay on scroll
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // run once on load
+});
+</script>
+</header>
+
+
+    <!-- FAQ -->
+<section id="support" class="bg-slate-50 py-16 animate-section reveal fade-left delay-200">
+  <div class="flex items-center justify-center reveal fade-left delay-200">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full items-center">
+      
+      <!-- Left Card -->
+      <div class="bg-white p-8 rounded-xl border border-[#2c1f5f] shadow-lg 
+                  transition transform hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:border-purple-600">
+        <h2 class="text-black text-2xl font-bold mb-4">
+          Heartfelt Connections, <br>Powered by Tech
+        </h2>
+        <p class="text-gray-700 mb-6">
+          Propel your business forward. Our innovative solutions, powered by cutting-edge UI/UX and digital expertise, forge seamless connections that transform client relationships into lasting success.
+        </p>
+        <a href="#Contact">
+        <button class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+          Get in touch →
+        </button>
+        </a>
+      </div>
+
+      <!-- Right Card -->
+      <div class="bg-white p-6 rounded-xl border border-[#2c1f5f] shadow-lg w-full max-w-lg 
+                  transition transform hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:border-purple-600">
+        <h2 class="text-black text-2xl font-bold mb-0 break-words">
+          <span id="typing-text"></span>
+          <span class="blinking-cursor">|</span>
+        </h2>
+      </div>
+
+    </div>
+  </div>
+
+
+
+<!-- Typing animation script -->
+<script>
+  const text = "Innovative tech solutions, crafted with care for you.";
+  const typingText = document.getElementById("typing-text");
+  let index = 0;
+  let isDeleting = false;
+
+  function type() {
+    typingText.textContent = text.substring(0, index);
+
+    if (!isDeleting) {
+      // typing forward
+      if (index < text.length) {
+        index++;
+      } else {
+        isDeleting = true;
+        setTimeout(type, 1200); // pause before deleting
+        return;
+      }
+    } else {
+      // deleting backward
+      if (index > 0) {
+        index--;
+      } else {
+        isDeleting = false;
+      }
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+
+  type();
+</script>
+
+<style>
+  .blinking-cursor {
+    display: inline-block;
+    width: 1ch;
+    animation: blink 0.7s infinite;
+    color: black;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+</style>
+</section>
+
+<!-- Services Section -->
+<section id="Services" class="relative bg-white py-20 reveal fade-left delay-200">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <!-- Section Title -->
+    <h2 id="servicesTitle" class="text-4xl font-bold text-gray-900 mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out">
+      Our Company <span class="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent">Services</span>
+    </h2>
+    <p id="servicesDesc" class="text-gray-600 max-w-2xl mx-auto mb-12 opacity-0 translate-y-6 transition-all duration-1000 ease-out delay-200">
+      We provide tailored IT solutions to streamline your operations and keep your business ahead in the digital world.
+    </p>
+
+    <!-- Slider (Hover Glow Applied) -->
+    <div class="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100 
+      transition-all duration-500 
+      hover:shadow-[0_0_40px_rgba(168,85,247,0.7)] 
+      hover:border hover:border-purple-500 
+      hover:bg-gradient-to-br hover:from-purple-50 hover:to-white 
+      hover:-translate-y-1">
+      
+      <div id="sliderTrack" class="flex transition-transform duration-700 ease-in-out">
+        
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
+          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Custom Software Development</h3>
+            <p class="text-gray-600 mb-4">Comprehensive software solutions tailored to streamline your business operations and launch your productivity into orbit.</p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>✔ Custom business applications</li>
+              <li>✔ Enterprise solutions</li>
+              <li>✔ Workflow automation</li>
+            </ul>
+            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
+          </div>
+          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
+            <img src="software.png" alt="Software" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
+          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Hardware Setup</h3>
+            <p class="text-gray-600 mb-4">Reliable infrastructure setup for servers, workstations, and custom hardware solutions.</p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>✔ Server installation</li>
+              <li>✔ Workstation deployment</li>
+              <li>✔ Ongoing hardware support</li>
+            </ul>
+            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
+          </div>
+          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
+            <img src="hardware.png" alt="Hardware" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
+          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Networking</h3>
+            <p class="text-gray-600 mb-4">High-performance, scalable, and secure networking tailored to your business.</p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>✔ LAN / WAN setup</li>
+              <li>✔ Secure Wi-Fi solutions</li>
+              <li>✔ Cloud connectivity</li>
+            </ul>
+            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
+          </div>
+          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
+            <img src="networking.png" alt="Networking" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
+          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Web Development</h3>
+            <p class="text-gray-600 mb-4">Modern, responsive, and scalable websites designed for performance and usability.</p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>✔ Responsive design</li>
+              <li>✔ E-commerce platforms</li>
+              <li>✔ API integrations</li>
+            </ul>
+            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
+          </div>
+          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
+            <img src="Website-design.webp" alt="Web Development" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
+          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Website Hosting</h3>
+            <p class="text-gray-600 mb-4">Secure, high-performance hosting solutions to keep your website online 24/7.</p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>✔ High-speed SSD servers</li>
+              <li>✔ 99.9% uptime guarantee</li>
+              <li>✔ 24/7 monitoring & support</li>
+            </ul>
+            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
+          </div>
+          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
+            <img src="hosting.png" alt="Hosting" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("sliderTrack");
+  const slides = Array.from(track.children); // static array
+  const slideCount = slides.length;
+  let sliderIndex = 0;
+
+  // Clone first slide for infinite loop
+  const firstClone = slides[0].cloneNode(true);
+  track.appendChild(firstClone);
+
+  function animateSlide(slide) {
+    const text = slide.querySelector("div.flex-1.text-left");
+    const imgWrapper = slide.querySelector("div.flex-1 img")?.parentElement;
+
+    if (text && imgWrapper) {
+      text.classList.add("opacity-0", "translate-y-6");
+      imgWrapper.classList.add("opacity-0", "scale-95");
+
+      setTimeout(() => {
+        text.classList.remove("opacity-0", "translate-y-6");
+        imgWrapper.classList.remove("opacity-0", "scale-95");
+      }, 100);
+    }
+  }
+
+  function moveSlide() {
+    sliderIndex++;
+    track.style.transition = "transform 0.7s ease-in-out";
+    track.style.transform = `translateX(-${sliderIndex * 100}%)`;
+
+    const currentSlide = track.children[sliderIndex];
+    if (currentSlide) animateSlide(currentSlide);
+
+    if (sliderIndex === slideCount) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        track.style.transform = "translateX(0)";
+        sliderIndex = 0;
+        animateSlide(track.children[sliderIndex]);
+      }, 700);
+    }
+  }
+
+  // Animate section title/desc on load
+  window.addEventListener("load", () => {
+    document.getElementById("servicesTitle").classList.remove("opacity-0", "translate-y-6");
+    document.getElementById("servicesDesc").classList.remove("opacity-0", "translate-y-6");
+    animateSlide(track.children[0]);
+  });
+
+  setInterval(moveSlide, 5000);
+</script>
+
+
+
+    <!-- TESTIMONIALS / METRICS -->
+<section id="Clients" class="bg-slate-50 animate-section from-bottom reveal fade-left delay-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 reveal fade-left delay-200">
+    <h3 class="text-3xl font-extrabold text-slate-900 animate-section">Customer Stories</h3>
+    
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start animate-section">
+      <div class="lg:col-span-2 relative">
+        <div class="relative bg-white rounded-xl p-6 shadow-md animate-section overflow-hidden 
+                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+          <!-- Testimonial Carousel -->
+          <div id="testimonial-carousel" class="flex transition-transform duration-700 ease-in-out">
+            
+            <!-- Testimonials (unchanged) -->
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"This service transformed our business operations."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <h4 class="font-semibold text-gray-900">John Doe <span class="text-gray-500 font-normal">, CEO</span></h4>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"Outstanding support and reliable solutions every time."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <h4 class="font-semibold text-gray-900">Jane Smith <span class="text-gray-500 font-normal">, CTO</span></h4>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"Their expertise in networking is unmatched."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <h4 class="font-semibold text-gray-900">Mark Wilson <span class="text-gray-500 font-normal">, IT Manager</span></h4>
+              </div>
+            </div>
+
+            <!-- Duplicates for infinite loop -->
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"This service transformed our business operations."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
+                <h4 class="font-semibold text-gray-900">John Doe <span class="text-gray-500 font-normal">, CEO</span></h4>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"Outstanding support and reliable solutions every time."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
+                <h4 class="font-semibold text-gray-900">Jane Smith <span class="text-gray-500 font-normal">, CTO</span></h4>
+              </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 text-center p-6">
+              <p class="text-lg text-gray-700 mb-4">"Their expertise in networking is unmatched."</p>
+              <div class="flex items-center justify-center space-x-3">
+                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
+                <h4 class="font-semibold text-gray-900">Mark Wilson <span class="text-gray-500 font-normal">, IT Manager</span></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <script>
+          const carousel = document.getElementById("testimonial-carousel");
+          let currentIndex = 0;
+          const testimonialSlides = carousel.children;
+          const total = testimonialSlides.length / 2; // real items only
+
+          function moveCarousel() {
+            currentIndex++;
+            carousel.style.transition = "transform 0.7s ease-in-out";
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            if (currentIndex === total) {
+              setTimeout(() => {
+                carousel.style.transition = "none"; // remove smooth effect
+                carousel.style.transform = "translateX(0)"; // snap back instantly
+                currentIndex = 0;
+              }, 800);
+            }
+          }
+
+          setInterval(moveCarousel, 4000);
+        </script>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 gap-6 animate-section from-bottom">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center animate-section from-left 
+                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+          <div class="text-3xl font-bold text-slate-900 animate-section">100%</div>
+          <div class="text-xs text-slate-500 mt-1 animate-section from-right">of clients say Gravity Technology’s support is efficient.</div>
+        </div>
+        
+        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center animate-section from-right 
+                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+          <div class="text-3xl font-bold text-slate-900 animate-section">98%</div>
+          <div class="text-xs text-slate-500 mt-1 animate-section from-left">of clients appreciate Gravity Technology’s seamless integration.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logos -->
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 opacity-70 animate-section">
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/ad.png" alt="Ad" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Nasew-Horizontal-logo.png" alt="Slack" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/BM INSURANCE BROKERS.png" alt="Salesforce" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/logo.png" alt="Dropbox" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/AERE Horizontal Lock up.png" alt="Mailchimp" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/logo_grided.png" alt="Paypal" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Logo (1).png" alt="Mailchimp" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Arcon construction logo Final-01.png" alt="Paypal" class="h-10 mb-2" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Works" class="bg-white">
+  <div class="relative">
+    <!-- Title -->
+    <div class="min-h-[30vh] flex items-center justify-center">
+      <h3 class="text-5xl font-bold text-slate-900 text-center">Our Works</h3>
+    </div>
+
+    <!-- Card 1 -->
+    <div class="sticky top-0 z-10 animate-section min-h-screen flex items-center">
+      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+        
+        <!-- Image -->
+        <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="re.png" alt="Real Estate Website" />
+        </div>
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
+          <h4 class="text-4xl font-semibold text-white">Real Estate Website</h4>
+          <p class="mt-6 text-white leading-relaxed text-lg">
+            A comprehensive platform for converting domains into fully functional content websites, tailored for the real estate industry.
+          </p>
+          <button class="mt-8 bg-white text[#3c1361]  py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+            View Project
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="sticky top-0 z-20 animate-section min-h-screen flex items-center">
+      <div class="flex flex-col md:flex-row items-center bg-[#06557A] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+        
+        <!-- Image -->
+        <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="ib.png" alt="Insurance Brokers Website" />
+        </div>
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
+          <h4 class="text-4xl font-semibold text-white">Insurance Brokers Website</h4>
+          <p class="mt-6 text-white leading-relaxed text-lg">
+            A robust platform designed for insurance brokers to manage policies, claims, and customer interactions efficiently.
+          </p>
+          <button class="mt-8 bg-[#6EC1E4] text-white py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+            View Project
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="sticky top-0 z-30 animate-section min-h-screen flex items-center">
+      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+        
+        <!-- Image -->
+        <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="crm.png" alt="Custom CRM Platform" />
+        </div>
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
+          <h4 class="text-4xl font-semibold text-white">Custom CRM Platform</h4>
+          <p class="mt-6 text-white leading-relaxed text-lg">
+            A powerful CRM solution enabling businesses to manage leads, track customer interactions, automate workflows, and gain actionable insights.
+          </p>
+          <button class="mt-8 bg-[#333333] text-white py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+            View Project
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-section {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.animate-section.visible {
+  animation: fadeInUp 0.8s ease forwards;
+}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".animate-section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>
+
+    <!-- PRODUCTS -->
+  <section id="Products" class="relative bg-white min-h-[400vh] overflow-hidden">
+    <div class="min-h-[30vh] flex items-center justify-center">
+      <h3 class="text-5xl font-bold text-slate-900 text-center">Our Products</h3>
+    </div>
+
+    <div class="pin-container sticky top-0 h-screen overflow-hidden">
+      <div id="horizontal-scroll-container" class="relative h-full w-full">
+        <div class="flex-shrink-0 absolute">
+          <div class="panel-content gradient-bg-1 rounded-none shadow-none">
+            <div class="description">
+              <h2 class="text-4xl font-bold text-white">ERP Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
+                All-in-one ERP solution for businesses of all sizes with comprehensive features.
+              </p>
+              <ul class="mt-6 text-white list-disc list-inside pl-4">
+                <li class="mb-2">Customizable dashboards for every department</li>
+                <li class="mb-2">Real-time analytics and reporting</li>
+                <li class="mb-2">Scalable architecture that grows with your business</li>
+                <li>Seamless integration with existing systems</li>
+              </ul>
+              <button class="mt-8 bg-white text-[#1f272c] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                Learn More
+              </button>
+            </div>
+            <div class="image-spot">
+              <img src="erp.png" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 absolute">
+          <div class="panel-content gradient-bg-2 rounded-none shadow-none">
+            <div class="description">
+              <h2 class="text-4xl font-bold text-white">CRM Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
+                Boost customer relationships and retention with our powerful CRM platform.
+              </p>
+              <ul class="mt-6 text-white list-disc list-inside pl-4">
+                <li class="mb-2">Lead tracking and automation</li>
+                <li class="mb-2">Email & SMS marketing campaigns</li>
+                <li class="mb-2">Integrated customer support system</li>
+                <li>Customer behavior analytics</li>
+              </ul>
+              <button class="mt-8 bg-white text-green-600 py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                Learn More
+              </button>
+            </div>
+            <div class="image-spot">
+              <img src="crm-web.png" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 absolute">
+          <div class="panel-content gradient-bg-3 rounded-none shadow-none">
+            <div class="description">
+              <h2 class="text-4xl font-bold text-white">AI Tools Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
+                Smart AI-powered productivity suite that transforms how you work.
+              </p>
+              <ul class="mt-6 text-white list-disc list-inside pl-4">
+                <li class="mb-2">AI text summarization for documents</li>
+                <li class="mb-2">Document auto-tagging and organization</li>
+                <li class="mb-2">Predictive insights and recommendations</li>
+                <li>Natural language processing capabilities</li>
+              </ul>
+              <button class="mt-8 bg-white text-[#00072D] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                Learn More
+              </button>
+            </div>
+            <div class="image-spot">
+              <img src="Ai_tools.png" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 absolute">
+          <div class="panel-content gradient-bg-4 rounded-none shadow-none">
+            <div class="description">
+              <h2 class="text-4xl font-bold text-white">DevOps Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
+                Continuous integration and deployment toolkit for modern development teams.
+              </p>
+              <ul class="mt-6 text-white list-disc list-inside pl-4">
+                <li class="mb-2">Cloud-native deployment pipelines</li>
+                <li class="mb-2">Zero-downtime deployment strategies</li>
+                <li class="mb-2">Advanced monitoring and alert systems</li>
+                <li>Automated testing and quality assurance</li>
+              </ul>
+              <button class="mt-8 bg-white text-[#1d4ed8] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                Learn More
+              </button>
+            </div>
+            <div class="image-spot">
+              <img src="Dev.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <style>
+    .gradient-bg-1 {
+      background: #1f272c;
+    }
+    .gradient-bg-2 {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    }
+    .gradient-bg-3 {
+      background: #00072D;
+    }
+    .gradient-bg-4 {
+      background: #1d4ed8;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    /* Ensure panels fit within visible screen height */
+    #horizontal-scroll-container > div {
+      width: 100vw !important;
+      height: 100vh !important; /* Initial value, will be adjusted by JS */
+      padding: 0 !important;
+      box-sizing: border-box;
+    }
+    /* Adjust inner content for side-by-side layout with space */
+    .panel-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    @media (min-width: 768px) {
+      .panel-content {
+        flex-direction: row;
+        gap: 4rem;
+        padding: 4rem;
+      }
+    }
+    /* Style for description and image spot */
+    .description {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-height: 100%;
+    }
+    .image-spot {
+      flex: 1;
+      width: 100%;
+      height: 100%; /* Fill available height, capped by panel */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      max-height: 100%;
+    }
+    @media (min-width: 768px) {
+      .description, .image-spot {
+        max-height: 80vh; /* Optional cap for better balance on desktop */
+      }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Calculate usable height excluding taskbar
+      function getUsableHeight() {
+        return window.innerHeight; // This approximates usable height; adjust if taskbar height is known
+        // For a more precise solution, you could use:
+        // const taskbarHeight = 40; // Adjust based on your taskbar height (e.g., 40px for Windows)
+        // return window.innerHeight - taskbarHeight;
+      }
+
+      const container = document.getElementById("horizontal-scroll-container");
+      const panels = gsap.utils.toArray("#horizontal-scroll-container > div");
+      const totalPanels = panels.length;
+      const panelWidth = window.innerWidth;
+
+      // Set initial positions and height based on usable height
+      const usableHeight = getUsableHeight();
+      gsap.set(panels, { 
+        position: "absolute", 
+        width: "100vw", 
+        height: usableHeight + "px", 
+        zIndex: (i) => i // Higher zIndex for later panels
+      });
+      gsap.set(panels[0], { x: 0, visibility: "visible" });
+      panels.forEach((panel, index) => {
+        if (index > 0) {
+          gsap.set(panel, { x: panelWidth, visibility: "hidden" }); // Start off-screen and hidden
+        }
+      });
+
+      // Update ScrollTrigger end value based on usable height
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pin-container",
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          end: () => `+=${totalPanels * usableHeight * 1.5}`, // Adjusted scroll distance
+        },
+      });
+
+      // Animate each panel to slide in from the right, hiding the previous one after completion
+      panels.forEach((panel, index) => {
+        if (index > 0) {
+          tl.to(panel, {
+            x: 0, // Slide in from the right
+            visibility: "visible", // Make visible
+            duration: 1,
+            ease: "power2.out"
+          })
+          .set(panels[index - 1], {
+            visibility: "hidden", // Hide previous panel after new panel is fully in
+            x: -panelWidth // Move it off-screen to the left
+          });
+        }
+      });
+
+      // Buffer for smooth end
+      tl.to({}, { duration: 0.5 });
+
+      // Handle window resize to update height dynamically
+      window.addEventListener("resize", () => {
+        const newUsableHeight = getUsableHeight();
+        gsap.set(panels, { height: newUsableHeight + "px" });
+        ScrollTrigger.refresh(); // Recalculate ScrollTrigger positions
+      });
+    });
+  </script>
+
+<!-- CONTACT US  -->
+<section id="Contact" class="bg-slate-50 relative animate-section mt-14 reveal fade-left delay-200">
+<section class="min-h-screen flex items-center justify-center p-6">
+  <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 bg-white rounded-2xl shadow-xl overflow-hidden">
+    
+    <!-- LEFT CONTACT INFO -->
+<div class="from-bottom bg-gradient-to-b from-purple-950 via-purple-900 to-purple-800 text-white p-10 flex flex-col justify-between 
+            transform transition-transform duration-500 hover:scale-105">
+  <div>
+    <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
+    <p class="text-purple-100 mb-6">Fill up the form and our Team will get back to you within 24 hours.</p>
+    
+    <ul class="space-y-4">
+        <li class="flex items-center gap-3">
+          <!-- Phone Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+              stroke="currentColor" class="w-6 h-6 text-purple-500">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M2.25 6.75c0-1.243 1.007-2.25 2.25-2.25h1.5a2.25 2.25 0 012.25 2.25v1.006c0 .52-.193 1.026-.54 1.407l-1.2 1.31a16.5 16.5 0 007.59 7.59l1.31-1.2c.381-.347.887-.54 1.407-.54H19.5a2.25 2.25 0 012.25 2.25v1.5c0 1.243-1.007 2.25-2.25 2.25h-.75C9.1 22.5 1.5 14.9 1.5 6.75v-.75z" />
+          </svg>
+          +251 910 446 666
+        </li>
+
+        <li class="flex items-center gap-3">
+          <!-- Mail Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+              stroke="currentColor" class="w-6 h-6 text-purple-500">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.82 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+          info@gravityet.com
+        </li>
+
+        <li class="flex items-center gap-3">
+          <!-- Map Pin Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+              stroke="currentColor" class="w-6 h-6 text-purple-500 flex-shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 21c-4.5-4.5-7.5-8.25-7.5-11.25A7.5 7.5 0 1119.5 9.75C19.5 12.75 16.5 16.5 12 21z" />
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 12.75a3 3 0 100-6 3 3 0 000 6z" />
+          </svg>
+          Bisrate Gabriel, next to <br> 
+          Adot Multiplex Shimeket commercial center, <br> 
+          7th floor 708 Addis Ababa, Ethiopia
+        </li>
+    </ul>
+  </div>
+
+  <!-- Socials -->
+  <div class="flex gap-4 mt-10">
+    <!-- Facebook -->
+    <a href="#" class="w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full hover:bg-purple-500 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-white" viewBox="0 0 24 24">
+        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898v-2.89h2.54V9.797c0-2.507 1.493-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="#" class="w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full hover:bg-purple-500 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-white" viewBox="0 0 24 24">
+        <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.5a1.5 1.5 0 11-3 .001 1.5 1.5 0 013-.001z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="#" class="w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full hover:bg-purple-500 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-white" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-2.5v-11h2.5v11zm-1.25-12.268c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.671 1.5-1.5 1.5zm13 12.268h-2.5v-5.604c0-1.337-.025-3.063-1.865-3.063-1.867 0-2.154 1.459-2.154 2.968v5.699h-2.5v-11h2.4v1.507h.034c.334-.632 1.152-1.298 2.373-1.298 2.538 0 3.012 1.671 3.012 3.842v6.949z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+
+    <!-- RIGHT CONTACT FORM -->
+    <div class="p-10">
+      <form action="#" method="POST" class="space-y-6">
+        
+        <!-- Name fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">First Name</label>
+            <input type="text" placeholder="John" 
+                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Last Name</label>
+            <input type="text" placeholder="Doe" 
+                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
+          </div>
+        </div>
+
+        <!-- Mail + Phone -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Mail</label>
+            <input type="email" placeholder="your@email.com" 
+                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Phone</label>
+            <input type="text" placeholder="+90 543 779 94 64" 
+                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
+          </div>
+        </div>
+
+        <!-- Radio Options -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">What type of website do you need?</label>
+          <div class="flex gap-6 mt-2 text-sm text-gray-700">
+            <label class="flex items-center gap-2">
+              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Design
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Development
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Logo Design
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Other
+            </label>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea rows="4" placeholder="Write your message..." 
+                    class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" 
+                class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold transition">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</section>
+
+    <!-- FOOTER -->
+<section class="bg-white border-t border-slate-200 animate-section from-left reveal fade-left delay-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 reveal fade-left delay-200">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- Left -->
+      <div class="md:col-span-2">
+        <img src="Gravity Logo.png" alt="Logo" class="h-12 w-auto object-contain mb-4">
+        <p class="text-slate-600 text-sm max-w-md">
+          Connecting Hearts, Through Technology..
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-slate-900 text-lg font-bold">Quick Links</h4>
+        <ul class="mt-3 space-y-2 text-sm text-slate-600">
+          <li><a href="#Services" class="hover:text-purple-500">Services</a></li>
+          <li><a href="#Works" class="hover:text-purple-500">Our Works</a></li>
+          <li><a href="#Clients" class="hover:text-purple-500">Clients</a></li>
+          <li><a href="#Contact" class="hover:text-purple-500">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-slate-900 text-lg font-bold">Contact Us</h4>
+        <ul class="mt-4 space-y-3 text-sm text-slate-600">
+          <li class="flex items-center gap-3">
+            <!-- Mail Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gravityet.com" class="hover:text-purple-500">info@gravityet.com</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <!-- Phone Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.14 1.04.38 2.04.72 3a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.96.34 1.96.58 3 .72A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+251910446666" class="hover:text-purple-500">+251 910 446 666</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <!-- Location Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2a10 10 0 0 0-10 10c0 7 10 16 10 16s10-9 10-16a10 10 0 0 0-10-10z"/><circle cx="12" cy="12" r="4"/></svg>
+            <span>Bisrate Gabriel, next to Adot Multiplex<br>Shimeket commercial center, 7th floor 708</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+<!-- Footer Bottom Row -->
+<div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-200 pt-4 text-[12px] text-slate-500">
+  <div>© 2025 Gravity Technology. All Rights Reserved.</div>
+  <div class="flex items-center gap-3 mt-2 sm:mt-0">
+    <button onclick="openModal('privacyModal')" class="hover:text-slate-700">Privacy Policy</button>
+    <button onclick="openModal('termsModal')" class="hover:text-slate-700">Terms of Service</button>
+  </div>
+</div>
+
+<!-- Modal JS -->
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+</script>
+
+  </div>
+</section>
+
+<!-- Privacy Modal -->
+<div id="privacyModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-lg max-w-lg w-full p-6 relative overflow-y-auto max-h-[90vh]">
+    <button onclick="closeModal('privacyModal')" class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">
+      ✕
+    </button>
+    <h2 class="text-lg font-bold text-slate-900">Privacy Policy</h2>
+    <p class="mt-3 text-sm text-slate-600">
+      At Gravity Technology, we value your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
+    </p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">1. Information We Collect</h3>
+    <p class="text-sm text-slate-600">We may collect personal details such as your name, email address, phone number, and usage data when you interact with our website or services.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">2. How We Use Your Information</h3>
+    <ul class="list-disc list-inside text-sm text-slate-600">
+      <li>To provide and improve our services</li>
+      <li>To respond to your inquiries and requests</li>
+      <li>To send important updates or promotional content (if you opt-in)</li>
+    </ul>
+
+    <h3 class="mt-4 font-semibold text-slate-800">3. Data Protection</h3>
+    <p class="text-sm text-slate-600">We implement appropriate technical and organizational measures to safeguard your data against unauthorized access, alteration, or disclosure.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">4. Your Rights</h3>
+    <p class="text-sm text-slate-600">You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at <a href="mailto:info@gravityet.com" class="text-purple-500 hover:underline">info@gravityet.com</a>.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">5. Updates</h3>
+    <p class="text-sm text-slate-600">We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date.</p>
+  </div>
+</div>
+
+<!-- Terms Modal -->
+<div id="termsModal" 
+     class="hidden fixed inset-0 flex items-center justify-center z-[9999]">
+  
+  <!-- Overlay with blur -->
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  
+  <!-- Modal Box -->
+  <div class="relative bg-white rounded-xl shadow-lg max-w-lg w-full p-6 overflow-y-auto max-h-[90vh] z-10">
+    <button onclick="closeModal('termsModal')" 
+            class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">
+      ✕
+    </button>
+
+    <h2 class="text-lg font-bold text-slate-900">Terms of Service</h2>
+    <p class="mt-3 text-sm text-slate-600">
+      These Terms of Service ("Terms") govern your use of Gravity Technology’s website and services. By accessing our website, you agree to comply with these Terms.
+    </p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">1. Use of Services</h3>
+    <p class="text-sm text-slate-600">You agree to use our services only for lawful purposes and in compliance with all applicable laws and regulations.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">2. Intellectual Property</h3>
+    <p class="text-sm text-slate-600">All content, designs, and technologies on this site are owned by Gravity Technology and protected under copyright and intellectual property laws.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">3. Limitation of Liability</h3>
+    <p class="text-sm text-slate-600">We are not responsible for any damages or losses arising from the use of our services, except as required by applicable law.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">4. Termination</h3>
+    <p class="text-sm text-slate-600">We reserve the right to suspend or terminate access to our services if you violate these Terms.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">5. Governing Law</h3>
+    <p class="text-sm text-slate-600">These Terms shall be governed by the laws of [Your Country/Region]. Any disputes will be resolved in the courts of that jurisdiction.</p>
+
+    <h3 class="mt-4 font-semibold text-slate-800">6. Changes to Terms</h3>
+    <p class="text-sm text-slate-600">We may update these Terms from time to time. Updates will take effect immediately upon being posted on this page.</p>
+  </div>
+</div>
+
+    <script>
+      // Mobile menu toggle
+      const mobileToggleFooter = document.getElementById('mobile-toggle');
+      const mobileMenuFooter = document.getElementById('mobile-menu');
+      if (mobileToggleFooter) {
+        mobileToggleFooter.addEventListener('click', () => mobileMenuFooter.classList.toggle('hidden'));
+      }
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-row').forEach((row) => {
+        row.addEventListener('click', () => {
+          const answer = row.querySelector('.faq-answer');
+          const icon = row.querySelector('.faq-icon');
+          const isOpen = !answer.classList.contains('hidden');
+            document.querySelectorAll('.faq-answer').forEach((a) => a.classList.add('hidden'));
+          document.querySelectorAll('.faq-icon').forEach((i) => (i.textContent = '+'));
+          if (!isOpen) {
+            answer.classList.remove('hidden');
+            icon.textContent = '–';
+          }
+        });
+      });
+
+      // Scroll and load animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.animate-section');
+        sections.forEach((section, index) => {
+          setTimeout(() => {
+            section.classList.add('visible');
+          }, index * 100); // Staggered animation on load with shorter delay for more elements
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+      });
+
+      // Testimonial carousel
+      const testimonials = [
+        {
+          company: 'ATLASSSIAN',
+          quote: 'The best payment solution I’ve ever used. Secure, efficient, and integrates perfectly with all my financial tools. Highly recommend!',
+          name: 'Hitesh Dorset',
+          role: 'Finance Consultant',
+          avatar: 'https://i.pravatar.cc/40?img=12'
+        },
+        {
+          company: 'HUBSPOT',
+          quote: 'ZenPay transformed our payment process, making it faster and more reliable. A game-changer for our business!',
+          name: 'Sarah Miller',
+          role: 'CFO',
+          avatar: 'https://i.pravatar.cc/40?img=14'
+        },
+        {
+          company: 'ZENDESK',
+          quote: 'Seamless multi-currency support and an intuitive interface. ZenPay is our go-to for global transactions.',
+          name: 'James Carter',
+          role: 'Operations Manager',
+          avatar: 'https://i.pravatar.cc/40?img=16'
+        }
+      ];
+
+      const testimonialCarousel = document.getElementById('testimonial-carousel');
+      const prevButton = document.getElementById('prev-testimonial');
+      const nextButton = document.getElementById('next-testimonial');
+      let currentSlide = 0;
+
+      function renderTestimonials() {
+        testimonialCarousel.innerHTML = testimonials.map((testimonial, index) => `
+          <div class="testimonial-slide ${index === 0 ? 'active' : ''} animate-section from-left">
+            <div class="text-xs text-slate-500 tracking-wider">${testimonial.company}</div>
+            <p class="mt-3 text-slate-900 text-lg sm:text-xl font-medium">${testimonial.quote}</p>
+            <div class="mt-4 flex items-center gap-3">
+              <img class="h-10 w-10 rounded-full" src="${testimonial.avatar}" alt="" />
+              <div>
+                <div class="text-slate-900 text-sm font-medium animate-section">${testimonial.name}</div>
+                <div class="text-slate-500 text-xs animate-section from-left">${testimonial.role}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function showSlide(index) {
+        const slides = testimonialCarousel.querySelectorAll('.testimonial-slide');
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+
+      prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+        showSlide(currentSlide);
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % testimonials.length;
+        showSlide(currentSlide);
+      });
+
+      // Initialize carousel
+      renderTestimonials();
+      showSlide(currentSlide);
+    </script>
+
+  </body>
+</html>
