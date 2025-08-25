@@ -96,35 +96,36 @@
   </head>
   <body class="antialiased text-slate-900 selection:bg-primary-200 selection:text-slate-900">
   <!-- HERO + NAVBAR -->
-  <header class="hero-bg relative h-screen">
+  <header id="hero" class="hero-bg relative h-screen">
     <!-- Gradient overlay -->
     <div class="absolute inset-0 h-screen w-full bg-cover bg-center" style="background-image: url('./fonts/image_fx_\ \(43\).jpg');"></div>
     
     <!-- NAVBAR -->
-    <nav id="main-nav"
-            class="absolute top-2 w-[95%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3">
-            <div class="max-w-6xl mx-auto w-full flex items-center justify-between relative">
-                <!-- Logo -->
-                <div class="flex items-center gap-8">
-                    <a href="#" class="flex items-center gap-2">
-                    <span class="inline-flex h-40 w-40 items-center justify-center">
-                    <img src="Gravity_White.png" alt="Logo" class="h-12 w-auto object-contain">
+<nav id="main-nav"
+    class="absolute top-2 w-[95%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3">
+    <div class="max-w-6xl mx-auto w-full flex items-center justify-between relative">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-8">
+            <a href="#" class="flex items-center gap-2">
+                <span class="inline-flex h-40 w-40 items-center justify-center">
+                    <!-- Default white logo -->
+                    <img id="logo" src="Gravity_White.png" alt="Logo" class="h-12 w-auto object-contain transition duration-500">
                 </span>
             </a>
-    </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div id="nav-links" class="hidden md:flex items-center gap-6 text-sm text-white transition-colors duration-500">
+            <a href="#Services" class="nav-link">Services</a>
+            <a href="#Works" class="nav-link">Our Works</a>
+            <a href="#Products" class="nav-link">Our Products</a>
+            <a href="#Clients" class="nav-link">Clients</a>
+            <a href="#Contact" class="nav-link">Contact</a>
+        </div>
 
 
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-6 text-sm text-white/80">
-      <a href="#Services" class="nav-link">Services</a>
-      <a href="#Works" class="nav-link">Our Works</a>
-      <a href="#Products" class="nav-link">Our Products</a>
-      <a href="#Clients" class="nav-link">Clients</a>
-      <a href="#Contact" class="nav-link">Contact</a>
-    </div>
-
-
-<!-- Mobile Menu Button -->
+                    <!-- Mobile Menu Button -->
                 <button id="mobile-toggle"
                     class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-white relative z-[50] cursor-pointer">
                     <!-- Animated Hamburger Icon -->
@@ -187,18 +188,43 @@
             });
         });
     </script>
-    <script> window.addEventListener("scroll", function () { 
-      const nav = document.getElementById("main-nav"); 
-      const hero = document.querySelector("header"); 
-      const heroHeight = hero.offsetHeight; 
-    if (window.scrollY > heroHeight - 80) { 
-        nav.classList.remove("bg-transparent"); 
-        nav.classList.add("bg-primary-800/80"); 
-        } else { nav.classList.remove("bg-primary-800/80"); 
-        nav.classList.add("bg-transparent"); 
-        } 
-      }); 
-    </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logo = document.getElementById("logo");
+  const nav = document.getElementById("main-nav");
+  const navLinks = document.getElementById("nav-links");
+  const hero = document.getElementById("hero");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Back inside hero → transparent
+          nav.classList.remove("bg-black/50", "backdrop-blur-md");
+          nav.classList.add("bg-transparent");
+
+          navLinks.classList.add("text-white");
+          navLinks.classList.remove("text-slate-900");
+
+          logo.src = "Gravity_White.png";
+        } else {
+          // After hero → black overlay
+          nav.classList.remove("bg-transparent");
+          nav.classList.add("bg-black/50", "backdrop-blur-md");
+
+          navLinks.classList.add("text-white");
+          navLinks.classList.remove("text-slate-900");
+
+          logo.src = "Gravity_White.png";
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  observer.observe(hero);
+});
+</script>
 
 <!-- HERO CONTENT -->
 <section class="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
@@ -224,7 +250,7 @@
     <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white animate-fade-in-up delay-300">
       for a Smarter Future
     </h1>
-    <p class="mt-10 max-w-2xl mx-auto text-white text-sm sm:text-base animate-fade-in-up delay-500">
+    <p class="mt-10 max-w-2xl mx-auto text-white sm:text-base animate-fade-in-up delay-500">
       At Gravity, we provide intelligent solutions for a data-driven world. We craft bespoke strategies to propel your business forward, helping you experience the pull of true innovation and measurable growth.
     </p>
     <div class="mt-14 flex items-center justify-center gap-3 animate-fade-in-up delay-700">
@@ -273,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     <!-- FAQ -->
-<section id="support" class="bg-slate-50 py-16 animate-section reveal fade-left delay-200">
+<section id="support" class="bg-white py-16 animate-section reveal fade-left delay-200">
   <div class="flex items-center justify-center reveal fade-left delay-200">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full items-center">
       
@@ -355,172 +381,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 </style>
 </section>
-
-<!-- Services Section -->
-<section id="Services" class="relative bg-white py-20 reveal fade-left delay-200">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <!-- Section Title -->
-    <h2 id="servicesTitle" class="text-4xl font-bold text-gray-900 mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-      Our Company <span class="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent">Services</span>
-    </h2>
-    <p id="servicesDesc" class="text-gray-600 max-w-2xl mx-auto mb-12 opacity-0 translate-y-6 transition-all duration-1000 ease-out delay-200">
-      We provide tailored IT solutions to streamline your operations and keep your business ahead in the digital world.
-    </p>
-
-    <!-- Slider (Hover Glow Applied) -->
-    <div class="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100 
-      transition-all duration-500 
-      hover:shadow-[0_0_40px_rgba(168,85,247,0.7)] 
-      hover:border hover:border-purple-500 
-      hover:bg-gradient-to-br hover:from-purple-50 hover:to-white 
-      hover:-translate-y-1">
-      
-      <div id="sliderTrack" class="flex transition-transform duration-700 ease-in-out">
-        
-        <!-- Slide 1 -->
-        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
-          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
-            <h3 class="text-3xl font-bold text-gray-900 mb-4">Custom Software Development</h3>
-            <p class="text-gray-600 mb-4">Comprehensive software solutions tailored to streamline your business operations and launch your productivity into orbit.</p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>✔ Custom business applications</li>
-              <li>✔ Enterprise solutions</li>
-              <li>✔ Workflow automation</li>
-            </ul>
-            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
-          </div>
-          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
-            <img src="software.png" alt="Software" class="rounded-lg shadow-lg">
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
-          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
-            <h3 class="text-3xl font-bold text-gray-900 mb-4">Hardware Setup</h3>
-            <p class="text-gray-600 mb-4">Reliable infrastructure setup for servers, workstations, and custom hardware solutions.</p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>✔ Server installation</li>
-              <li>✔ Workstation deployment</li>
-              <li>✔ Ongoing hardware support</li>
-            </ul>
-            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
-          </div>
-          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
-            <img src="hardware.png" alt="Hardware" class="rounded-lg shadow-lg">
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
-          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
-            <h3 class="text-3xl font-bold text-gray-900 mb-4">Networking</h3>
-            <p class="text-gray-600 mb-4">High-performance, scalable, and secure networking tailored to your business.</p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>✔ LAN / WAN setup</li>
-              <li>✔ Secure Wi-Fi solutions</li>
-              <li>✔ Cloud connectivity</li>
-            </ul>
-            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
-          </div>
-          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
-            <img src="networking.png" alt="Networking" class="rounded-lg shadow-lg">
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
-          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
-            <h3 class="text-3xl font-bold text-gray-900 mb-4">Web Development</h3>
-            <p class="text-gray-600 mb-4">Modern, responsive, and scalable websites designed for performance and usability.</p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>✔ Responsive design</li>
-              <li>✔ E-commerce platforms</li>
-              <li>✔ API integrations</li>
-            </ul>
-            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
-          </div>
-          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
-            <img src="Website-design.webp" alt="Web Development" class="rounded-lg shadow-lg">
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="w-full flex-shrink-0 flex flex-col md:flex-row items-center gap-8 p-10 slide">
-          <div class="flex-1 text-left opacity-0 translate-y-6 transition-all duration-700 ease-out">
-            <h3 class="text-3xl font-bold text-gray-900 mb-4">Website Hosting</h3>
-            <p class="text-gray-600 mb-4">Secure, high-performance hosting solutions to keep your website online 24/7.</p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>✔ High-speed SSD servers</li>
-              <li>✔ 99.9% uptime guarantee</li>
-              <li>✔ 24/7 monitoring & support</li>
-            </ul>
-            <a href="#" class="text-purple-600 font-medium hover:underline">Request a Quote →</a>
-          </div>
-          <div class="flex-1 opacity-0 scale-95 transition-all duration-700 ease-out">
-            <img src="hosting.png" alt="Hosting" class="rounded-lg shadow-lg">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  const track = document.getElementById("sliderTrack");
-  const slides = Array.from(track.children); // static array
-  const slideCount = slides.length;
-  let sliderIndex = 0;
-
-  // Clone first slide for infinite loop
-  const firstClone = slides[0].cloneNode(true);
-  track.appendChild(firstClone);
-
-  function animateSlide(slide) {
-    const text = slide.querySelector("div.flex-1.text-left");
-    const imgWrapper = slide.querySelector("div.flex-1 img")?.parentElement;
-
-    if (text && imgWrapper) {
-      text.classList.add("opacity-0", "translate-y-6");
-      imgWrapper.classList.add("opacity-0", "scale-95");
-
-      setTimeout(() => {
-        text.classList.remove("opacity-0", "translate-y-6");
-        imgWrapper.classList.remove("opacity-0", "scale-95");
-      }, 100);
-    }
-  }
-
-  function moveSlide() {
-    sliderIndex++;
-    track.style.transition = "transform 0.7s ease-in-out";
-    track.style.transform = `translateX(-${sliderIndex * 100}%)`;
-
-    const currentSlide = track.children[sliderIndex];
-    if (currentSlide) animateSlide(currentSlide);
-
-    if (sliderIndex === slideCount) {
-      setTimeout(() => {
-        track.style.transition = "none";
-        track.style.transform = "translateX(0)";
-        sliderIndex = 0;
-        animateSlide(track.children[sliderIndex]);
-      }, 700);
-    }
-  }
-
-  // Animate section title/desc on load
-  window.addEventListener("load", () => {
-    document.getElementById("servicesTitle").classList.remove("opacity-0", "translate-y-6");
-    document.getElementById("servicesDesc").classList.remove("opacity-0", "translate-y-6");
-    animateSlide(track.children[0]);
-  });
-
-  setInterval(moveSlide, 5000);
-</script>
-
-
 
     <!-- TESTIMONIALS / METRICS -->
 <section id="Clients" class="bg-slate-50 animate-section from-bottom reveal fade-left delay-200">
@@ -668,7 +528,102 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
-<section id="Works" class="bg-white">
+<section id="Services" class="relative bg-white text-black py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Section Title -->
+    <h2 class="text-4xl font-bold text-center mb-6">
+      Our Company <span class="bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Services</span>
+    </h2>
+    <p class="text-gray-600 text-center max-w-2xl mx-auto mb-14">
+      We deliver professional IT solutions tailored to your business, keeping you secure, connected, and future-ready.
+    </p>
+
+    <!-- Services Grid -->
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Card 1 -->
+      <div class="relative bg-white rounded-2xl shadow p-6 text-left">
+        <!-- Floating Icon -->
+        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+          <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"\>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /\>
+          </svg>
+        </div>
+
+        <h3 class="font-bold text-lg text-gray-900 mt-6">Networking</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Secure and reliable office network setup that streamlines communication and keeps your business connected.
+        </p>
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+          Request a quote →
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative bg-white rounded-2xl shadow p-6 text-left">
+        <!-- Floating Icon -->
+        <div class="absolute -top-4 -left-4 bg-purple-200 p-3 rounded-xl shadow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+
+        <h3 class="font-bold text-lg text-gray-900 mt-6">Software Development</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Comprehensive software solutions tailored to streamline operations and maximize business productivity.
+        </p>
+        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+          Request a quote →
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative bg-white rounded-2xl shadow p-6 text-left">
+        <!-- Floating Icon -->
+        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12V4a2 2 0 012-2h10a2 2 0 012 2v8M5 12v8a2 2 0 002 2h10a2 2 0 002-2v-8m-4-8v8m-2-8v8m4-8v8" />
+          </svg>
+        </div>
+
+        <h3 class="font-bold text-lg text-gray-900 mt-6">Website Hosting</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Reliable, secure, and high-performance hosting solutions to keep your website running smoothly and efficiently.
+        </p>
+        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+          Request a quote →
+        </a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="relative bg-white rounded-2xl shadow p-6 text-left">
+        <!-- Floating Icon -->
+        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z" />
+          </svg>
+        </div>
+
+        <h3 class="font-bold text-lg text-gray-900 mt-6">Hardware Setup</h3>
+        <p class="mt-2 text-gray-600 text-sm">
+          Reliable setup for your office and IT infrastructure, ensuring your team has the tools they need to work efficiently and securely.
+        </p>
+        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+          Request a quote →
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-12 flex justify-center">
+      <a href="#Contact" class="px-6 py-3 bg-purple-500 text-white rounded-lg font-medium shadow hover:bg-purple-600 transition">
+        Hire Us Today →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="Works" class="bg-slate-50">
   <div class="relative">
     <!-- Title -->
     <div class="min-h-[30vh] flex items-center justify-center">
@@ -677,7 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 1 -->
     <div class="sticky top-0 z-10 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -699,7 +654,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 2 -->
     <div class="sticky top-0 z-20 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center bg-[#06557A] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+      <div class="flex flex-col md:flex-row items-center bg-[#06557A] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -721,7 +676,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 3 -->
     <div class="sticky top-0 z-30 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -790,17 +745,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-1 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-white">ERP Website</h2>
-              <p class="mt-6 text-white leading-relaxed text-lg">
+              <h2 class="text-4xl font-bold text-gray-200">ERP Website</h2>
+              <p class="mt-6 text-gray-200 leading-relaxed text-lg">
                 All-in-one ERP solution for businesses of all sizes with comprehensive features.
               </p>
-              <ul class="mt-6 text-white list-disc list-inside pl-4">
+              <ul class="mt-6 text-lg text-gray-200 list-disc list-inside pl-4">
                 <li class="mb-2">Customizable dashboards for every department</li>
                 <li class="mb-2">Real-time analytics and reporting</li>
                 <li class="mb-2">Scalable architecture that grows with your business</li>
                 <li>Seamless integration with existing systems</li>
               </ul>
-              <button class="mt-8 bg-white text-[#1f272c] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+              <button class="mt-8 bg-gray-200 text-[#1f272c] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
                 Learn More
               </button>
             </div>
@@ -813,17 +768,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-2 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-white">CRM Website</h2>
-              <p class="mt-6 text-white leading-relaxed text-lg">
+              <h2 class="text-4xl font-bold text-yellow-100">CRM Website</h2>
+              <p class="mt-6 text-yellow-100 leading-relaxed text-lg">
                 Boost customer relationships and retention with our powerful CRM platform.
               </p>
-              <ul class="mt-6 text-white list-disc list-inside pl-4">
+              <ul class="mt-6 text-lg text-yellow-100 list-disc list-inside pl-4">
                 <li class="mb-2">Lead tracking and automation</li>
                 <li class="mb-2">Email & SMS marketing campaigns</li>
                 <li class="mb-2">Integrated customer support system</li>
                 <li>Customer behavior analytics</li>
               </ul>
-              <button class="mt-8 bg-white text-green-600 py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+              <button class="mt-8 bg-yellow-100 text-green-600 py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
                 Learn More
               </button>
             </div>
@@ -836,17 +791,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-3 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-white">AI Tools Website</h2>
-              <p class="mt-6 text-white leading-relaxed text-lg">
+              <h2 class="text-4xl font-bold text-blue-300">AI Tools Website</h2>
+              <p class="mt-6 text-blue-300 leading-relaxed text-lg">
                 Smart AI-powered productivity suite that transforms how you work.
               </p>
-              <ul class="mt-6 text-white list-disc list-inside pl-4">
+              <ul class="mt-6 text-blue-300 text-lg list-disc list-inside pl-4">
                 <li class="mb-2">AI text summarization for documents</li>
                 <li class="mb-2">Document auto-tagging and organization</li>
                 <li class="mb-2">Predictive insights and recommendations</li>
                 <li>Natural language processing capabilities</li>
               </ul>
-              <button class="mt-8 bg-white text-[#00072D] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+              <button class="mt-8 bg-blue-300 text-[#00072D] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
                 Learn More
               </button>
             </div>
@@ -859,17 +814,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-4 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-white">DevOps Website</h2>
-              <p class="mt-6 text-white leading-relaxed text-lg">
+              <h2 class="text-4xl font-bold text-green-200">DevOps Website</h2>
+              <p class="mt-6 text-green-200 leading-relaxed text-lg">
                 Continuous integration and deployment toolkit for modern development teams.
               </p>
-              <ul class="mt-6 text-white list-disc list-inside pl-4">
+              <ul class="mt-6 text-lg text-green-200 list-disc list-inside pl-4">
                 <li class="mb-2">Cloud-native deployment pipelines</li>
                 <li class="mb-2">Zero-downtime deployment strategies</li>
                 <li class="mb-2">Advanced monitoring and alert systems</li>
                 <li>Automated testing and quality assurance</li>
               </ul>
-              <button class="mt-8 bg-white text-[#1d4ed8] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+              <button class="mt-8 bg-green-200 text-[#1d4ed8] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
                 Learn More
               </button>
             </div>
@@ -1109,71 +1064,72 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 
-    <!-- RIGHT CONTACT FORM -->
-    <div class="p-10">
-      <form action="#" method="POST" class="space-y-6">
-        
-        <!-- Name fields -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700">First Name</label>
-            <input type="text" placeholder="John" 
-                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Last Name</label>
-            <input type="text" placeholder="Doe" 
-                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
-          </div>
-        </div>
-
-        <!-- Mail + Phone -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Mail</label>
-            <input type="email" placeholder="your@email.com" 
-                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Phone</label>
-            <input type="text" placeholder="+90 543 779 94 64" 
-                   class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"/>
-          </div>
-        </div>
-
-        <!-- Radio Options -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700">What type of website do you need?</label>
-          <div class="flex gap-6 mt-2 text-sm text-gray-700">
-            <label class="flex items-center gap-2">
-              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Design
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Development
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Logo Design
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Other
-            </label>
-          </div>
-        </div>
-
-        <!-- Message -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea rows="4" placeholder="Write your message..." 
-                    class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-sm"></textarea>
-        </div>
-
-        <!-- Submit -->
-        <button type="submit" 
-                class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold transition">
-          Send Message
-        </button>
-      </form>
+<!-- RIGHT CONTACT FORM -->
+<div class="p-8">
+  <form action="#" method="POST" class="space-y-6">
+    
+    <!-- Name fields -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-[15px] font-medium text-gray-700">First Name</label>
+        <input type="text" placeholder="John" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+      </div>
+      <div>
+        <label class="block text-[15px] font-medium text-gray-700">Last Name</label>
+        <input type="text" placeholder="Doe" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+      </div>
     </div>
+
+    <!-- Mail + Phone -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-[15px] font-medium text-gray-700">Mail</label>
+        <input type="email" placeholder="your@email.com" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+      </div>
+      <div>
+        <label class="block text-[15px] font-medium text-gray-700">Phone</label>
+        <input type="text" placeholder="+251 943 799 464" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+      </div>
+    </div>
+
+    <!-- Radio Options -->
+    <div>
+      <label class="block text-[15px] font-medium text-gray-700">What type of website do you need?</label>
+      <div class="flex flex-wrap gap-5 mt-2 text-[15px] text-gray-700">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Design
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Development
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Logo Design
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Other
+        </label>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div>
+      <label class="block text-[15px] font-medium text-gray-700">Message</label>
+      <textarea rows="4" placeholder="Write your message..." 
+                class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" 
+            class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold text-base transition">
+      Send Message
+    </button>
+  </form>
+</div>
+
   </div>
 </section>
 
@@ -1187,17 +1143,18 @@ document.addEventListener("DOMContentLoaded", () => {
       <!-- Left -->
       <div class="md:col-span-2">
         <img src="Gravity Logo.png" alt="Logo" class="h-12 w-auto object-contain mb-4">
-        <p class="text-slate-600 text-sm max-w-md">
+        <p class="text-slate-600 text-lg max-w-md">
           Connecting Hearts, Through Technology..
         </p>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h4 class="text-slate-900 text-lg font-bold">Quick Links</h4>
+        <h4 class="text-slate-900 text-xl font-bold">Quick Links</h4>
         <ul class="mt-3 space-y-2 text-sm text-slate-600">
           <li><a href="#Services" class="hover:text-purple-500">Services</a></li>
           <li><a href="#Works" class="hover:text-purple-500">Our Works</a></li>
+          <li><a href="#Products" class="hover:text-purple-500">Our Products</a></li>
           <li><a href="#Clients" class="hover:text-purple-500">Clients</a></li>
           <li><a href="#Contact" class="hover:text-purple-500">Contact</a></li>
         </ul>
@@ -1205,7 +1162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <!-- Contact -->
       <div>
-        <h4 class="text-slate-900 text-lg font-bold">Contact Us</h4>
+        <h4 class="text-slate-900 text-xl font-bold">Contact Us</h4>
         <ul class="mt-4 space-y-3 text-sm text-slate-600">
           <li class="flex items-center gap-3">
             <!-- Mail Icon -->

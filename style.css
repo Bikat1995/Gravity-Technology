@@ -135,4 +135,7 @@ h1, h2, h3 {
             top: 12px;
             transform: rotate(-135deg);
         }
+        p {
+          font-size: 18px;
+        }
 
