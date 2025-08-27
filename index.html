@@ -461,24 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
       <!-- Card 1 -->
-      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-left">
-        <!-- Floating Icon -->
-        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
-          <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"\>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /\>
-          </svg>
-        </div>
-
-        <h3 class="font-bold text-2xl text-gray-900 mt-6">Networking</h3>
-        <p class="mt-2 text-gray-600 text-lg">
-          Secure and reliable office network setup that streamlines communication and keeps your business connected.
-        </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
-          Request a quote →
-        </a>
-      </div>
-
-      <!-- Card 2 -->
       <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-right">
         <!-- Floating Icon -->
         <div class="absolute -top-4 -left-4 bg-purple-200 p-3 rounded-xl shadow">
@@ -490,6 +472,24 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3 class="font-bold text-2xl text-gray-900 mt-6">Software Development</h3>
         <p class="mt-2 text-gray-600 text-lg">
           Comprehensive software solutions tailored to streamline operations and maximize business productivity.
+        </p>
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
+          Request a quote →
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-left">
+        <!-- Floating Icon -->
+        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+          <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"\>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /\>
+          </svg>
+        </div>
+
+        <h3 class="font-bold text-2xl text-gray-900 mt-6">Networking</h3>
+        <p class="mt-2 text-gray-600 text-lg">
+          Secure and reliable office network setup that streamlines communication and keeps your business connected.
         </p>
         <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
           Request a quote →
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- CTA Button -->
     <div class="mt-12 flex justify-center reveal animate-fade-in-up">
       <a href="#Contact" class="px-6 py-3 bg-purple-500 text-white rounded-lg font-medium shadow hover:bg-purple-600 transition">
-        Hire Us Today →
+        Contact Us →
       </a>
     </div>
   </div>
@@ -546,8 +546,11 @@ document.addEventListener("DOMContentLoaded", () => {
 <section id="Works" class="bg-slate-50">
   <div class="relative">
     <!-- Title -->
-    <div class="min-h-[30vh] flex items-center justify-center">
+    <div class="min-h-[30vh] flex flex-col b-3 items-center justify-center">
       <h3 class="text-5xl font-bold text-slate-900 text-center">Our Works</h3>
+      <p class="text-center mt-6 max-w-2xl mx-auto">
+        We craft tailored, user-friendly websites that reflect your brand and enhance customer engagement with stunning, responsive designs.
+      </p>
     </div>
 
     <!-- Card 1 -->
@@ -556,7 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
-          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="re.png" alt="Real Estate Website" />
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="re.png" alt="Real Estate Website" />
         </div>
 
         <!-- Content -->
@@ -578,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
-          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="ib.png" alt="Insurance Brokers Website" />
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="ib.png" alt="Insurance Brokers Website" />
         </div>
 
         <!-- Content -->
@@ -600,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
-          <img class="w-4/5 h-4/5 object-cover rounded-xl shadow-lg" src="crm.png" alt="Custom CRM Platform" />
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="crm.png" alt="Custom CRM Platform" />
         </div>
 
         <!-- Content -->
@@ -618,51 +621,17 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
-<section class="relative overflow-hidden bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white px-8 sm:px-16 py-20 flex flex-col lg:flex-row items-center lg:justify-between">
+<section class="relative overflow-hidden mt-14 bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white px-8 sm:px-16 py-20 flex flex-col lg:flex-row items-center lg:justify-between">
   <!-- Left Content -->
   <div class="relative z-10 max-w-xl">
     <h2 class="text-4xl sm:text-5xl font-extrabold leading-tight">
       <span class="text-purple-300">Accelerate</span> Innovation,<br>
       <span class="text-white">Build Smarter,</span> <span class="text-indigo-300">Achieve More</span>
     </h2>
-    <p class="mt-4 text-lg text-purple-100">
-      Thousands of teams trust <span class="font-semibold">GaxP</span> to streamline app development and accelerate growth.
-    </p>
-
-    <ul class="mt-6 space-y-3 text-lg text-purple-100">
-      <li class="flex items-start gap-2">
-        <span class="text-purple-400">✔</span> One-click publish to free domain
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-purple-400">✔</span> Learning made easy with official tutorials
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-purple-400">✔</span> Figma to GaxP support on launch
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-purple-400">✔</span> 24/7 customer support
-      </li>
-    </ul>
-
     <!-- Buttons -->
     <div class="mt-8 flex gap-4">
       <a href="#Contact"
         class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 font-semibold shadow-lg hover:opacity-90 transition">
-        <!-- Calendar SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor" 
-            class="w-5 h-5 text-white">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 
-                  2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-            Book A Demo
-      </a>
-
-      <a href="#Contact"
-        class="flex items-center gap-2 px-6 py-3 rounded-lg border border-purple-500 font-semibold shadow hover:bg-purple-500 hover:text-white transition text-purple-500">
         <!-- Phone SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" 
             fill="none" 
@@ -757,8 +726,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- PRODUCTS -->
   <section id="Products" class="relative bg-white min-h-[300vh] overflow-hidden">
-    <div class="min-h-[30vh] flex items-center justify-center reveal fade-left">
+    <div class="min-h-[30vh] flex flex-col b-3 items-center justify-center">
       <h3 class="text-5xl font-bold text-slate-900 text-center">Our Products</h3>
+      <p class="text-center mt-6 max-w-2xl mx-auto">
+        A user-friendly solution enabling businesses to build polished websites seamlessly with an intuitive design process.
+      </p>
     </div>
 
     <div class="pin-container sticky top-0 h-screen overflow-hidden">
@@ -827,7 +799,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
             </div>
             <div class="image-spot">
-              <img src="Ai_tools.png" alt="">
+              <img src="Dev.png" alt="">
             </div>
           </div>
         </div>
@@ -850,7 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
             </div>
             <div class="image-spot">
-              <img src="Dev.png" alt="">
+              <img src="Ai_tools.png" alt="">
             </div>
           </div>
         </div>
