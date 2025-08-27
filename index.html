@@ -101,7 +101,7 @@
     <div class="absolute inset-0 h-screen w-full bg-cover bg-center" style="background-image: url('./fonts/image_fx_\ \(43\).jpg');"></div>
 <!-- NAVBAR -->
 <nav id="main-nav"
-    class="absolute top-2 w-[95%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between 
+    class="absolute top-2 w-[90%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between 
            transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3
            opacity-0 translate-y-[-20px]">
     <div class="max-w-6xl mx-auto w-full flex items-center justify-between relative">
@@ -278,11 +278,10 @@ document.addEventListener("DOMContentLoaded", () => {
   </h1>
 
   <!-- Description -->
-  <p id="hero-desc"
-     class="mt-10 max-w-2xl mx-auto text-white sm:text-base opacity-0 translate-y-[-20px]">
-    At Gravity, we provide intelligent solutions for a data-driven world. We craft bespoke strategies to propel your business forward, helping you experience the pull of true innovation and measurable growth.
-  </p>
-
+    <p id="hero-desc"
+      class="mt-10 max-w-2xl mx-auto text-white text-sm sm:text-base md:text-lg lg:text-xl opacity-0 translate-y-[-20px]">
+      At Gravity, we provide intelligent solutions for a data-driven world. We craft bespoke strategies to propel your business forward, helping you experience the pull of true innovation and measurable growth.
+    </p>
   <!-- Buttons -->
   <div id="hero-buttons" 
        class="mt-14 flex items-center justify-center gap-3 opacity-0 translate-y-[-20px]">
@@ -432,164 +431,34 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 </section>
 
-    <!-- TESTIMONIALS / METRICS -->
-<section id="Clients" class="bg-slate-50 animate-section from-bottom reveal fade-left delay-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 reveal fade-left delay-200">
-    <h3 class="text-3xl font-extrabold text-slate-900 animate-section">Customer Stories</h3>
-    
-    <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start animate-section">
-      <div class="lg:col-span-2 relative">
-        <div class="relative bg-white rounded-xl p-6 shadow-md animate-section overflow-hidden 
-                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-          <!-- Testimonial Carousel -->
-          <div id="testimonial-carousel" class="flex transition-transform duration-700 ease-in-out">
-            
-            <!-- Testimonials (unchanged) -->
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"This service transformed our business operations."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <h4 class="font-semibold text-gray-900">John Doe <span class="text-gray-500 font-normal">, CEO</span></h4>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"Outstanding support and reliable solutions every time."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <h4 class="font-semibold text-gray-900">Jane Smith <span class="text-gray-500 font-normal">, CTO</span></h4>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"Their expertise in networking is unmatched."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <h4 class="font-semibold text-gray-900">Mark Wilson <span class="text-gray-500 font-normal">, IT Manager</span></h4>
-              </div>
-            </div>
-
-            <!-- Duplicates for infinite loop -->
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"This service transformed our business operations."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
-                <h4 class="font-semibold text-gray-900">John Doe <span class="text-gray-500 font-normal">, CEO</span></h4>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"Outstanding support and reliable solutions every time."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
-                <h4 class="font-semibold text-gray-900">Jane Smith <span class="text-gray-500 font-normal">, CTO</span></h4>
-              </div>
-            </div>
-
-            <div class="w-full flex-shrink-0 text-center p-6">
-              <p class="text-lg text-gray-700 mb-4">"Their expertise in networking is unmatched."</p>
-              <div class="flex items-center justify-center space-x-3">
-                <img src="https://via.placeholder.com/50" class="w-10 h-10 rounded-full shadow-md">
-                <h4 class="font-semibold text-gray-900">Mark Wilson <span class="text-gray-500 font-normal">, IT Manager</span></h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <script>
-          const carousel = document.getElementById("testimonial-carousel");
-          let currentIndex = 0;
-          const testimonialSlides = carousel.children;
-          const total = testimonialSlides.length / 2; // real items only
-
-          function moveCarousel() {
-            currentIndex++;
-            carousel.style.transition = "transform 0.7s ease-in-out";
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            if (currentIndex === total) {
-              setTimeout(() => {
-                carousel.style.transition = "none"; // remove smooth effect
-                carousel.style.transform = "translateX(0)"; // snap back instantly
-                currentIndex = 0;
-              }, 800);
-            }
-          }
-
-          setInterval(moveCarousel, 4000);
-        </script>
-
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-2 gap-6 animate-section from-bottom">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center animate-section from-left 
-                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-          <div class="text-3xl font-bold text-slate-900 animate-section">100%</div>
-          <div class="text-xs text-slate-500 mt-1 animate-section from-right">of clients say Gravity Technology’s support is efficient.</div>
-        </div>
-        
-        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center animate-section from-right 
-                    transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-          <div class="text-3xl font-bold text-slate-900 animate-section">98%</div>
-          <div class="text-xs text-slate-500 mt-1 animate-section from-left">of clients appreciate Gravity Technology’s seamless integration.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Logos -->
-    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 opacity-70 animate-section">
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/ad.png" alt="Ad" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/Nasew-Horizontal-logo.png" alt="Slack" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/BM INSURANCE BROKERS.png" alt="Salesforce" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/logo.png" alt="Dropbox" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/AERE Horizontal Lock up.png" alt="Mailchimp" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/logo_grided.png" alt="Paypal" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/Logo (1).png" alt="Mailchimp" class="h-10 mb-2" />
-      </div>
-
-      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
-                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
-        <img src="./fonts/Arcon construction logo Final-01.png" alt="Paypal" class="h-10 mb-2" />
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="Services" class="relative bg-white text-black py-20">
-  <div class="max-w-6xl mx-auto px-6 reveal animate-fade-in-up">
+  <div class="max-w-7xl mx-auto px-6 reveal animate-fade-in-up">
     <!-- Section Title -->
     <h2 class="text-4xl font-bold text-center mb-6">
-      Our Company <span class="bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Services</span>
+      Our Company 
+      <span class="animated-gradient bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+        Services
+      </span>
     </h2>
+
+      <style>
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animated-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+          }
+      </style>
+
     <p class="text-gray-600 text-center max-w-2xl mx-auto mb-14">
       We deliver professional IT solutions tailored to your business, keeping you secure, connected, and future-ready.
     </p>
 
     <!-- Services Grid -->
-    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
       <!-- Card 1 -->
       <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-left">
@@ -600,11 +469,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>
         </div>
 
-        <h3 class="font-bold text-lg text-gray-900 mt-6">Networking</h3>
-        <p class="mt-2 text-gray-600 text-sm">
+        <h3 class="font-bold text-2xl text-gray-900 mt-6">Networking</h3>
+        <p class="mt-2 text-gray-600 text-lg">
           Secure and reliable office network setup that streamlines communication and keeps your business connected.
         </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
           Request a quote →
         </a>
       </div>
@@ -618,11 +487,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>
         </div>
 
-        <h3 class="font-bold text-lg text-gray-900 mt-6">Software Development</h3>
-        <p class="mt-2 text-gray-600 text-sm">
+        <h3 class="font-bold text-2xl text-gray-900 mt-6">Software Development</h3>
+        <p class="mt-2 text-gray-600 text-lg">
           Comprehensive software solutions tailored to streamline operations and maximize business productivity.
         </p>
-        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
           Request a quote →
         </a>
       </div>
@@ -636,11 +505,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>
         </div>
 
-        <h3 class="font-bold text-lg text-gray-900 mt-6">Website Hosting</h3>
-        <p class="mt-2 text-gray-600 text-sm">
+        <h3 class="font-bold text-2xl text-gray-900 mt-6">Website Hosting</h3>
+        <p class="mt-2 text-gray-600 text-lg">
           Reliable, secure, and high-performance hosting solutions to keep your website running smoothly and efficiently.
         </p>
-        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
           Request a quote →
         </a>
       </div>
@@ -654,11 +523,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>
         </div>
 
-        <h3 class="font-bold text-lg text-gray-900 mt-6">Hardware Setup</h3>
-        <p class="mt-2 text-gray-600 text-sm">
+        <h3 class="font-bold text-2xl text-gray-900 mt-6">Hardware Setup</h3>
+        <p class="mt-2 text-gray-600 text-lg">
           Reliable setup for your office and IT infrastructure, ensuring your team has the tools they need to work efficiently and securely.
         </p>
-        <a href="#" class="mt-4 inline-block text-purple-500 text-sm font-medium hover:underline">
+        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
           Request a quote →
         </a>
       </div>
@@ -683,7 +552,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 1 -->
     <div class="sticky top-0 z-10 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
+      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -705,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 2 -->
     <div class="sticky top-0 z-20 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center bg-[#06557A] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
+      <div class="flex flex-col md:flex-row items-center bg-[#06557A] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -727,7 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 3 -->
     <div class="sticky top-0 z-30 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 min-h-[100vh]">
+      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -747,6 +616,107 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
   </div>
+</section>
+
+<section class="relative overflow-hidden bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white px-8 sm:px-16 py-20 flex flex-col lg:flex-row items-center lg:justify-between">
+  <!-- Left Content -->
+  <div class="relative z-10 max-w-xl">
+    <h2 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+      <span class="text-purple-300">Accelerate</span> Innovation,<br>
+      <span class="text-white">Build Smarter,</span> <span class="text-indigo-300">Achieve More</span>
+    </h2>
+    <p class="mt-4 text-lg text-purple-100">
+      Thousands of teams trust <span class="font-semibold">GaxP</span> to streamline app development and accelerate growth.
+    </p>
+
+    <ul class="mt-6 space-y-3 text-lg text-purple-100">
+      <li class="flex items-start gap-2">
+        <span class="text-purple-400">✔</span> One-click publish to free domain
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-400">✔</span> Learning made easy with official tutorials
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-400">✔</span> Figma to GaxP support on launch
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-400">✔</span> 24/7 customer support
+      </li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="mt-8 flex gap-4">
+      <a href="#Contact"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 font-semibold shadow-lg hover:opacity-90 transition">
+        <!-- Calendar SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            class="w-5 h-5 text-white">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 
+                  2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+            Book A Demo
+      </a>
+
+      <a href="#Contact"
+        class="flex items-center gap-2 px-6 py-3 rounded-lg border border-purple-500 font-semibold shadow hover:bg-purple-500 hover:text-white transition text-purple-500">
+        <!-- Phone SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor" 
+            class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.518 
+                  4.553a1 1 0 01-.502 1.21l-1.708.854a11.042 
+                  11.042 0 005.516 5.516l.854-1.708a1 1 
+                  0 011.21-.502l4.553 1.518A1 1 0 0121 
+                  18.72V21a2 2 0 01-2 2h-1C9.163 23 1 
+                  14.837 1 5V4a2 2 0 012-2h0z" />
+        </svg>
+        Contact Us
+      </a>
+    </div>
+  </div>
+
+<!-- Right Website Preview -->
+<div class="relative mt-12 lg:mt-0 lg:ml-64 flex-1">
+  <!-- Glowing background -->
+  <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/40 to-indigo-500/30 blur-3xl rounded-full"></div>
+
+  <!-- Website Builder Card -->
+  <div class="relative rounded-xl bg-gradient-to-br from-indigo-900 to-purple-900 shadow-2xl p-6 w-[350px]">
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-purple-700 pb-3 mb-4">
+      <h3 class="text-lg font-semibold text-purple-200">Website Builder</h3>
+      <span class="px-2 py-1 text-xs bg-purple-700/40 rounded-full">Preview</span>
+    </div>
+
+    <!-- Mockup Website -->
+    <div class="bg-purple-800/40 p-4 rounded-lg space-y-3">
+      <!-- Fake Navbar -->
+      <div class="flex justify-between text-xs text-purple-300">
+        <span>Home</span>
+        <span>About</span>
+        <span>Contact</span>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="bg-purple-600/40 h-20 rounded-lg"></div>
+
+      <!-- Text Blocks -->
+      <div class="space-y-2">
+        <div class="h-3 bg-purple-500/40 rounded"></div>
+        <div class="h-3 bg-purple-500/40 rounded w-3/4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 </section>
 
 
@@ -786,7 +756,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
     <!-- PRODUCTS -->
-  <section id="Products" class="relative bg-white min-h-[400vh] overflow-hidden">
+  <section id="Products" class="relative bg-white min-h-[300vh] overflow-hidden">
     <div class="min-h-[30vh] flex items-center justify-center reveal fade-left">
       <h3 class="text-5xl font-bold text-slate-900 text-center">Our Products</h3>
     </div>
@@ -1038,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
 
 <!-- CONTACT US  -->
-<section id="Contact" class="bg-slate-50 relative animate-section mt-14 reveal fade-left delay-200">
+<section id="Contact" class="bg-slate-50 relative animate-section  reveal fade-left delay-200">
 <section class="min-h-screen flex items-center justify-center p-6 reveal fade-up">
   <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 bg-white rounded-2xl shadow-xl overflow-hidden">
     
@@ -1184,6 +1154,53 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
+    <!-- TESTIMONIALS / METRICS -->
+<section id="Clients" class="bg-slate-50 animate-section from-bottom reveal fade-left delay-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 reveal fade-left delay-200">
+    <h3 class="text-3xl font-extrabold text-slate-900 text-center animate-section">Our Clients</h3>
+    <!-- Logos -->
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 opacity-70 animate-section">
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/ad.png" alt="Ad" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Nasew-Horizontal-logo.png" alt="Slack" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/BM INSURANCE BROKERS.png" alt="Salesforce" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/logo.png" alt="Dropbox" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/AERE Horizontal Lock up.png" alt="Mailchimp" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/logo_grided.png" alt="Paypal" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-left 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Logo (1).png" alt="Mailchimp" class="h-10 mb-2" />
+      </div>
+
+      <div class="h-24 rounded-md bg-white border border-slate-200 flex flex-col items-center justify-center text-slate-600 text-sm animate-section from-right 
+                  transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/30">
+        <img src="./fonts/Arcon construction logo Final-01.png" alt="Paypal" class="h-10 mb-2" />
+      </div>
+    </div>
+  </div>
 </section>
 
     <!-- FOOTER -->
@@ -1235,98 +1252,197 @@ document.addEventListener("DOMContentLoaded", () => {
 
     </div>
 
-<!-- Footer Bottom Row -->
+<!-- Footer Bottom Row (inside your footer/section as before) -->
 <div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-200 pt-4 text-[12px] text-slate-500">
   <div>© 2025 Gravity Technology. All Rights Reserved.</div>
   <div class="flex items-center gap-3 mt-2 sm:mt-0">
-    <button onclick="openModal('privacyModal')" class="hover:text-slate-700">Privacy Policy</button>
-    <button onclick="openModal('termsModal')" class="hover:text-slate-700">Terms of Service</button>
+    <button type="button" onclick="openModal('privacyModal')" class="hover:text-slate-700">Privacy Policy</button>
+    <button type="button" onclick="openModal('termsModal')" class="hover:text-slate-700">Terms of Service</button>
   </div>
 </div>
 
-<!-- Modal JS -->
+<!-- Put this script ONCE (replace any smaller modal script you have) -->
 <script>
-  function openModal(id) {
-    document.getElementById(id).classList.remove('hidden');
+/* Robust modal helpers: move modals to <body>, force fixed + top z-index,
+   click outside to close, and Esc key close. */
+(function () {
+  const HIGH_Z = 2147483647; // very high z-index to outrank any stacking context
+
+  function ensureModalRoot(id) {
+    const el = document.getElementById(id);
+    if (!el) return null;
+
+    // Move to body if not already child of body
+    if (el.parentElement !== document.body) {
+      document.body.appendChild(el);
+      // console.log(`Moved #${id} to <body>`);
+    }
+
+    // Force fixed positioning and full-screen sizing on the root modal container
+    Object.assign(el.style, {
+      position: 'fixed',
+      inset: '0px',
+      display: el.classList.contains('hidden') ? 'none' : 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: String(HIGH_Z)
+    });
+
+    // Ensure overlay exists and covers full screen
+    let overlay = el.querySelector('.modal-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      el.insertBefore(overlay, el.firstChild);
+    }
+    Object.assign(overlay.style, {
+      position: 'absolute',
+      left: '0', top: '0', right: '0', bottom: '0',
+      background: 'rgba(0,0,0,0.5)',
+      backdropFilter: 'blur(6px)',
+      cursor: 'pointer',
+      zIndex: String(HIGH_Z - 1)
+    });
+    overlay.onclick = () => closeModal(id);
+
+    // Ensure modal box is above overlay
+    const box = el.querySelector('.modal-box') || el.querySelector('.modal-content') || Array.from(el.children).find(c => !c.classList.contains('modal-overlay'));
+    if (box) {
+      Object.assign(box.style, {
+        position: 'relative',
+        zIndex: String(HIGH_Z)
+      });
+    }
+
+    return el;
   }
-  function closeModal(id) {
-    document.getElementById(id).classList.add('hidden');
-  }
+
+  window.openModal = function (id) {
+    const el = ensureModalRoot(id);
+    if (!el) return;
+    el.classList.remove('hidden');
+    el.style.display = 'flex';
+    // Prevent body scroll while modal open
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('hidden');
+    el.style.display = 'none';
+    // Restore body scroll (simple approach; this will re-enable scroll)
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  };
+
+  // Move modals to body and wire overlay clicks on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    ['privacyModal', 'termsModal'].forEach(id => ensureModalRoot(id));
+  });
+
+  // Close on Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      ['privacyModal', 'termsModal'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.style.display !== 'none') closeModal(id);
+      });
+    }
+  });
+
+  // Debug helper you can run in console if it still behaves oddly:
+  window.logStackingContexts = function (id) {
+    const el = document.getElementById(id);
+    if (!el) { console.log('No element with id', id); return; }
+    let node = el.parentElement;
+    console.log(`Stacking contexts above #${id}:`);
+    while (node) {
+      const s = getComputedStyle(node);
+      const interesting = ['transform','filter','opacity','willChange','position','zIndex','mixBlendMode']
+        .filter(p => s[p] && s[p] !== 'none' && s[p] !== '0' && s[p] !== '1');
+      if (interesting.length) {
+        console.log(node, interesting.reduce((acc,p)=> (acc + `${p}: ${s[p]}; `), ''));
+      }
+      node = node.parentElement;
+    }
+  };
+})();
 </script>
 
-  </div>
-</section>
+<!-- ====== Put your modals at the end of the document (or anywhere) — these will be moved to <body> automatically ====== -->
 
 <!-- Privacy Modal -->
-<div id="privacyModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-xl shadow-lg max-w-lg w-full p-6 relative overflow-y-auto max-h-[90vh]">
-    <button onclick="closeModal('privacyModal')" class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">
-      ✕
-    </button>
+<div id="privacyModal" class="hidden" aria-hidden="true">
+  <div class="modal-box relative bg-white rounded-xl shadow-lg max-w-lg w-full p-6 overflow-y-auto max-h-[90vh]">
+    <button onclick="closeModal('privacyModal')" class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">✕</button>
     <h2 class="text-lg font-bold text-slate-900">Privacy Policy</h2>
+
     <p class="mt-3 text-sm text-slate-600">
-      At Gravity Technology, we value your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
+      At Gravity Technology, we respect your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you interact with our website or services.
     </p>
 
-    <h3 class="mt-4 font-semibold text-slate-800">1. Information We Collect</h3>
-    <p class="text-sm text-slate-600">We may collect personal details such as your name, email address, phone number, and usage data when you interact with our website or services.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">2. How We Use Your Information</h3>
-    <ul class="list-disc list-inside text-sm text-slate-600">
-      <li>To provide and improve our services</li>
-      <li>To respond to your inquiries and requests</li>
-      <li>To send important updates or promotional content (if you opt-in)</li>
+    <h3 class="mt-5 font-semibold text-slate-800">Information We Collect</h3>
+    <ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1">
+      <li>Personal information you provide (e.g., name, email, contact details).</li>
+      <li>Usage data such as IP address, browser type, and site interactions.</li>
+      <li>Cookies and similar technologies to improve your experience.</li>
     </ul>
 
-    <h3 class="mt-4 font-semibold text-slate-800">3. Data Protection</h3>
-    <p class="text-sm text-slate-600">We implement appropriate technical and organizational measures to safeguard your data against unauthorized access, alteration, or disclosure.</p>
+    <h3 class="mt-5 font-semibold text-slate-800">How We Use Your Information</h3>
+    <ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1">
+      <li>To provide and improve our services.</li>
+      <li>To personalize your experience on our platform.</li>
+      <li>To communicate updates, promotions, and support responses.</li>
+    </ul>
 
-    <h3 class="mt-4 font-semibold text-slate-800">4. Your Rights</h3>
-    <p class="text-sm text-slate-600">You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at <a href="mailto:info@gravityet.com" class="text-purple-500 hover:underline">info@gravityet.com</a>.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">5. Updates</h3>
-    <p class="text-sm text-slate-600">We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date.</p>
-  </div>
-</div>
-
-<!-- Terms Modal -->
-<div id="termsModal" 
-     class="hidden fixed inset-0 flex items-center justify-center z-[9999]">
-  
-  <!-- Overlay with blur -->
-  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  
-  <!-- Modal Box -->
-  <div class="relative bg-white rounded-xl shadow-lg max-w-lg w-full p-6 overflow-y-auto max-h-[90vh] z-10">
-    <button onclick="closeModal('termsModal')" 
-            class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">
-      ✕
-    </button>
-
-    <h2 class="text-lg font-bold text-slate-900">Terms of Service</h2>
-    <p class="mt-3 text-sm text-slate-600">
-      These Terms of Service ("Terms") govern your use of Gravity Technology’s website and services. By accessing our website, you agree to comply with these Terms.
+    <h3 class="mt-5 font-semibold text-slate-800">Your Rights</h3>
+    <p class="text-sm text-slate-600 mt-2">
+      You may request access, correction, or deletion of your personal information at any time. Contact us at <a href="mailto:support@gravity.com" class="text-indigo-600 underline">gravity.et</a>.
     </p>
 
-    <h3 class="mt-4 font-semibold text-slate-800">1. Use of Services</h3>
-    <p class="text-sm text-slate-600">You agree to use our services only for lawful purposes and in compliance with all applicable laws and regulations.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">2. Intellectual Property</h3>
-    <p class="text-sm text-slate-600">All content, designs, and technologies on this site are owned by Gravity Technology and protected under copyright and intellectual property laws.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">3. Limitation of Liability</h3>
-    <p class="text-sm text-slate-600">We are not responsible for any damages or losses arising from the use of our services, except as required by applicable law.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">4. Termination</h3>
-    <p class="text-sm text-slate-600">We reserve the right to suspend or terminate access to our services if you violate these Terms.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">5. Governing Law</h3>
-    <p class="text-sm text-slate-600">These Terms shall be governed by the laws of [Your Country/Region]. Any disputes will be resolved in the courts of that jurisdiction.</p>
-
-    <h3 class="mt-4 font-semibold text-slate-800">6. Changes to Terms</h3>
-    <p class="text-sm text-slate-600">We may update these Terms from time to time. Updates will take effect immediately upon being posted on this page.</p>
+    <p class="text-sm text-slate-600 mt-5">
+      By using our website, you agree to this Privacy Policy. We may update it periodically, and any changes will be posted on this page.
+    </p>
   </div>
 </div>
+<!-- Terms Modal -->
+<div id="termsModal" class="hidden" aria-hidden="true">
+  <div class="modal-box relative bg-white rounded-xl shadow-lg max-w-lg w-full p-6 overflow-y-auto max-h-[90vh]">
+    <button onclick="closeModal('termsModal')" class="absolute top-3 right-3 text-slate-500 hover:text-slate-700">✕</button>
+    <h2 class="text-lg font-bold text-slate-900">Terms of Service</h2>
+
+    <p class="mt-3 text-sm text-slate-600">
+      These Terms of Service (“Terms”) govern your use of Gravity Technology’s website and services. By accessing or using our site, you agree to comply with these Terms.
+    </p>
+
+    <h3 class="mt-5 font-semibold text-slate-800">Use of Services</h3>
+    <p class="text-sm text-slate-600 mt-2">
+      You agree to use our services only for lawful purposes and not to engage in any activity that could harm, disable, or impair the functionality of our website.
+    </p>
+
+    <h3 class="mt-5 font-semibold text-slate-800">Intellectual Property</h3>
+    <p class="text-sm text-slate-600 mt-2">
+      All content, branding, and intellectual property on this site are the property of Gravity Technology. You may not copy, distribute, or reproduce our content without written permission.
+    </p>
+
+    <h3 class="mt-5 font-semibold text-slate-800">Limitation of Liability</h3>
+    <p class="text-sm text-slate-600 mt-2">
+      Gravity Technology is not liable for any damages arising from your use of our website or services, including but not limited to data loss or service interruptions.
+    </p>
+
+    <h3 class="mt-5 font-semibold text-slate-800">Changes to Terms</h3>
+    <p class="text-sm text-slate-600 mt-2">
+      We may update these Terms periodically. Continued use of our services after updates constitutes acceptance of the new Terms.
+    </p>
+
+    <p class="text-sm text-slate-600 mt-5">
+      For questions, contact us at <a href="mailto:support@gravity.com" class="text-indigo-600 underline">gravity.et</a>.
+    </p>
+  </div>
+</div>
+
 
     <script>
       // Mobile menu toggle
