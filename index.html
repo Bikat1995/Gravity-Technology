@@ -1103,32 +1103,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- RIGHT CONTACT FORM -->
 <div class="p-8">
-  <form action="#" method="POST" class="space-y-6">
-    
+  <form id="contactForm" action="https://formspree.io/f/xpwjwvjg" method="POST" class="space-y-6">
     <!-- Name fields -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
         <label class="block text-[15px] font-medium text-gray-700">First Name</label>
-        <input type="text" placeholder="John" 
-               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+        <input type="text" name="first_name" placeholder="John" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2" required/>
       </div>
       <div>
         <label class="block text-[15px] font-medium text-gray-700">Last Name</label>
-        <input type="text" placeholder="Doe" 
-               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+        <input type="text" name="last_name" placeholder="Doe" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2" required/>
       </div>
     </div>
 
     <!-- Mail + Phone -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
-        <label class="block text-[15px] font-medium text-gray-700">Mail</label>
-        <input type="email" placeholder="your@email.com" 
-               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
+        <label class="block text-[15px] font-medium text-gray-700">Email</label>
+        <input type="email" name="email" placeholder="your@email.com" 
+               class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2" required/>
       </div>
       <div>
         <label class="block text-[15px] font-medium text-gray-700">Phone</label>
-        <input type="text" placeholder="+251 943 799 464" 
+        <input type="text" name="phone" placeholder="+251 943 799 464" 
                class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"/>
       </div>
     </div>
@@ -1138,16 +1137,16 @@ document.addEventListener("DOMContentLoaded", () => {
       <label class="block text-[15px] font-medium text-gray-700">What type of website do you need?</label>
       <div class="flex flex-wrap gap-5 mt-2 text-[15px] text-gray-700">
         <label class="flex items-center gap-2">
-          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Design
+          <input type="radio" name="service" value="Web Design" class="text-purple-600 focus:ring-purple-600"/> Web Design
         </label>
         <label class="flex items-center gap-2">
-          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Web Development
+          <input type="radio" name="service" value="Web Development" class="text-purple-600 focus:ring-purple-600"/> Web Development
         </label>
         <label class="flex items-center gap-2">
-          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Logo Design
+          <input type="radio" name="service" value="Logo Design" class="text-purple-600 focus:ring-purple-600"/> Logo Design
         </label>
         <label class="flex items-center gap-2">
-          <input type="radio" name="service" class="text-purple-600 focus:ring-purple-600"/> Other
+          <input type="radio" name="service" value="Other" class="text-purple-600 focus:ring-purple-600"/> Other
         </label>
       </div>
     </div>
@@ -1155,8 +1154,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- Message -->
     <div>
       <label class="block text-[15px] font-medium text-gray-700">Message</label>
-      <textarea rows="4" placeholder="Write your message..." 
-                class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2"></textarea>
+      <textarea name="message" rows="4" placeholder="Write your message..." 
+                class="mt-1 block w-full border-b border-gray-300 focus:border-purple-600 focus:ring-0 text-base py-2" required></textarea>
     </div>
 
     <!-- Submit -->
@@ -1164,8 +1163,54 @@ document.addEventListener("DOMContentLoaded", () => {
             class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold text-base transition">
       Send Message
     </button>
+
+    <!-- Success/Error Messages -->
+    <p id="formMessage" class="mt-4 text-center text-base font-medium hidden"></p>
   </form>
 </div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault(); // prevent page reload
+
+    const formData = new FormData(form);
+    const action = form.action;
+
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formMessage.textContent = "Your message has been sent successfully!";
+        formMessage.className = "mt-4 text-center text-green-600 font-medium";
+        formMessage.style.display = "block";
+        form.reset();
+      } else {
+        const data = await response.json();
+        formMessage.textContent = data.error || "Something went wrong. Please try again.";
+        formMessage.className = "mt-4 text-center text-red-600 font-medium";
+        formMessage.style.display = "block";
+      }
+    } catch (error) {
+      formMessage.textContent = "Something went wrong. Please try again.";
+      formMessage.className = "mt-4 text-center text-red-600 font-medium";
+      formMessage.style.display = "block";
+    }
+
+    // Hide the message after 5 seconds
+    setTimeout(() => {
+      formMessage.style.display = "none";
+    }, 5000);
+  });
+</script>
+
+
 
   </div>
 </section>
