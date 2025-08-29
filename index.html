@@ -682,9 +682,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- Title -->
     <div class="min-h-[30vh] flex flex-col b-3 items-center justify-center">
       <h3 class="text-5xl font-bold text-slate-900 text-center">Our Works</h3>
-      <p class="text-center mt-6 max-w-2xl mx-auto">
-        We craft tailored, user-friendly websites that reflect your brand and enhance customer engagement with stunning, responsive designs.
-      </p>
+        <p class="text-center mt-6 max-w-2xl mx-auto px-4 sm:px-6">
+          We craft tailored, user-friendly websites that reflect your brand and enhance customer engagement with stunning, responsive designs.
+        </p>
     </div>
 
     <!-- Card 1 -->
@@ -916,7 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <section id="Products" class="relative bg-white min-h-[300vh] overflow-hidden">
     <div class="min-h-[30vh] flex flex-col b-3 items-center justify-center">
       <h3 class="text-5xl font-bold text-slate-900 text-center">Our Products</h3>
-      <p class="text-center mt-6 max-w-2xl mx-auto">
+      <p class="text-center mt-6 max-w-2xl mx-auto px-4 sm:px-6">
         A user-friendly solution enabling businesses to build polished websites seamlessly with an intuitive design process.
       </p>
     </div>
@@ -1130,79 +1130,81 @@ document.addEventListener("DOMContentLoaded", () => {
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Calculate usable height excluding taskbar
-      function getUsableHeight() {
-        return window.innerHeight; // This approximates usable height; adjust if taskbar height is known
-        // For a more precise solution, you could use:
-        // const taskbarHeight = 40; // Adjust based on your taskbar height (e.g., 40px for Windows)
-        // return window.innerHeight - taskbarHeight;
-      }
-
-      const container = document.getElementById("horizontal-scroll-container");
-      const panels = gsap.utils.toArray("#horizontal-scroll-container > div");
-      const totalPanels = panels.length;
-      const panelWidth = window.innerWidth;
-
-      // Set initial positions and height based on usable height
-      const usableHeight = getUsableHeight();
-      gsap.set(panels, { 
-        position: "absolute", 
-        width: "100vw", 
-        height: usableHeight + "px", 
-        zIndex: (i) => i // Higher zIndex for later panels
-      });
-      gsap.set(panels[0], { x: 0, visibility: "visible" });
-      panels.forEach((panel, index) => {
-        if (index > 0) {
-          gsap.set(panel, { x: panelWidth, visibility: "hidden" }); // Start off-screen and hidden
-        }
-      });
-
-      // Update ScrollTrigger end value based on usable height
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".pin-container",
-    pin: true,
-    scrub: 0.2,            // ✅ fast catch-up (not laggy)
-    anticipatePin: 1,      // ✅ smooth pin release
-    start: "top top",
-    end: () => `+=${totalPanels * usableHeight}`,
-    invalidateOnRefresh: true,
-  },
-});
-
-// Animate panels
-panels.forEach((panel, index) => {
-  if (index > 0) {
-    tl.to(panel, {
-      x: 0,
-      visibility: "visible",
-      duration: 1,
-      ease: "power2.out"
-    })
-    .set(panels[index - 1], {
-      visibility: "hidden",
-      x: -panelWidth
-    });
+<style>
+  html, body {
+    overscroll-behavior: none; /* Prevents bounce on mobile */
   }
-});
+</style>
 
-// Add a buffer at the end so it doesn’t "lock"
-tl.to({}, { duration: 1.5 });
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger);
 
+    function getUsableHeight() {
+      return window.innerHeight;
+    }
 
-      // Handle window resize to update height dynamically
-      window.addEventListener("resize", () => {
-        const newUsableHeight = getUsableHeight();
-        gsap.set(panels, { height: newUsableHeight + "px" });
-        ScrollTrigger.refresh(); // Recalculate ScrollTrigger positions
-      });
+    const container = document.getElementById("horizontal-scroll-container");
+    const panels = gsap.utils.toArray("#horizontal-scroll-container > div");
+    const totalPanels = panels.length;
+    const panelWidth = window.innerWidth;
+
+    const usableHeight = getUsableHeight();
+    gsap.set(panels, { 
+      position: "absolute", 
+      width: "100vw", 
+      height: usableHeight + "px", 
+      zIndex: (i) => i
     });
-  </script>
+    gsap.set(panels[0], { x: 0, visibility: "visible" });
+    panels.forEach((panel, index) => {
+      if (index > 0) {
+        gsap.set(panel, { x: panelWidth, visibility: "hidden" });
+      }
+    });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pin-container",
+          pin: true,
+          pinSpacing: true,       // ✅ force correct spacing
+          scrub: 1,
+          anticipatePin: 1,
+          fastScrollEnd: true,
+          start: "top top",
+          end: () => `+=${totalPanels * usableHeight}`,
+          invalidateOnRefresh: true,
+          // markers: true,       // ✅ uncomment to debug
+        },
+      });
+      ScrollTrigger.normalizeScroll(true); // ✅ smooth out mobile flicks
+
+
+    panels.forEach((panel, index) => {
+      if (index > 0) {
+        tl.to(panel, {
+          x: 0,
+          visibility: "visible",
+          duration: 1,
+          ease: "power2.out"
+        })
+        .set(panels[index - 1], {
+          visibility: "hidden",
+          x: -panelWidth
+        });
+      }
+    });
+
+    tl.to({}, { duration: 1.5 });
+
+    window.addEventListener("resize", () => {
+      const newUsableHeight = getUsableHeight();
+      gsap.set(panels, { height: newUsableHeight + "px" });
+      ScrollTrigger.refresh();
+    });
+  });
+</script>
+
 
 <!-- CONTACT US  -->
 <section id="Contact" class="bg-slate-50 relative animate-section  reveal fade-left delay-200">
