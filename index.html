@@ -809,7 +809,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
-<section class="relative overflow-hidden mt-14 bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white px-8 sm:px-16 py-20 flex flex-col lg:flex-row items-center lg:justify-between">
+<section class="relative mt-14 bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white px-8 sm:px-16 py-20 flex flex-col lg:flex-row items-center lg:justify-between">
   <!-- Left Content -->
   <div class="relative z-10 max-w-xl">
     <h2 class="text-4xl sm:text-5xl font-extrabold leading-tight">
@@ -923,25 +923,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="pin-container sticky top-0 h-screen overflow-hidden">
       <div id="horizontal-scroll-container" class="relative h-full w-full">
-        <div class="flex-shrink-0 absolute inset-0 p-4 pt-32 sm:pt-24 md:pt-16">
-          <div class="panel-content gradient-bg-1 rounded-none shadow-none">
-            <div class="description max-w-full sm:max-w-lg">
-              <h2 class="text-4xl font-bold text-gray-200">School Management System Website</h2>
-              <p class="mt-6 text-gray-200 leading-snug text-lg">
-                Manage all aspects of school administration efficiently.
-              </p>
-              <ul class="mt-6 text-gray-200 text-lg list-disc list-inside pl-4 space-y-1">
-                <li>Student & staff management</li>
-                <li>Attendance tracking</li>
-                <li>Timetable & exams</li>
-                <li>Teacher-student-parent communication</li>
-              </ul>
-              <button 
-              onclick="window.open('https://asquala.gravity.et/', '_blank')" 
-              class="mt-8 bg-white text-[#4B5563] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
-                View Product
-              </button>
-            </div>
+<div class="flex-shrink-0 absolute inset-0 p-4">
+  <div class="panel-content gradient-bg-1 rounded-none shadow-none h-full flex items-start">
+    <div class="description max-w-full sm:max-w-lg mt-32 sm:mt-28 md:mt-20">
+      <h2 class="text-4xl font-bold text-gray-200">
+        School Management System Website
+      </h2>
+      <p class="mt-6 text-gray-200 leading-snug text-lg">
+        Manage all aspects of school administration efficiently.
+      </p>
+      <ul class="mt-6 text-gray-200 text-lg list-disc list-inside pl-4 space-y-1">
+        <li>Student & staff management</li>
+        <li>Attendance tracking</li>
+        <li>Timetable & exams</li>
+        <li>Teacher-student-parent communication</li>
+      </ul>
+      <button 
+        onclick="window.open('https://asquala.gravity.et/', '_blank')" 
+        class="mt-8 bg-white text-[#4B5563] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+        View Product
+      </button>
+    </div>
 
 
             <!-- Image spot stays here -->
@@ -952,7 +954,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-2 rounded-none shadow-none">
-            <div class="description">
+            <div class="description mt-32 sm:mt-28 md:mt-20">
               <h2 class="text-4xl font-bold text-white">CRM Website</h2>
               <p class="mt-6 text-white leading-relaxed text-lg">
                 Boost customer relationships and retention with our powerful CRM platform.
@@ -977,7 +979,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-3 rounded-none shadow-none">
-            <div class="description">
+            <div class="description mt-32 sm:mt-28 md:mt-20">
               <h2 class="text-4xl font-bold text-white">Health Care Management Website</h2>
               <p class="mt-6 text-white leading-relaxed text-lg">
                 A complete solution to streamline patient care, hospital operations, and medical services.
@@ -1001,7 +1003,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-4 rounded-none shadow-none">
-            <div class="description">
+            <div class="description mt-32 sm:mt-28 md:mt-20">
               <h2 class="text-4xl font-bold text-white">Attendance Management System Website</h2>
               <p class="mt-6 text-white leading-relaxed text-lg">
                 Simplify tracking and managing attendance for students and staff.
@@ -1024,7 +1026,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-5 rounded-none shadow-none">
-            <div class="description">>
+            <div class="description mt-32 sm:mt-28 md:mt-20">>
                 <h2 class="text-4xl font-bold text-white">Appointment Scheduling Website</h2>
                 <p class="mt-6 text-white leading-relaxed text-lg">
                   Streamline booking and managing appointments with ease.
@@ -1177,8 +1179,8 @@ document.addEventListener("DOMContentLoaded", () => {
           // markers: true,       // ✅ uncomment to debug
         },
       });
-      ScrollTrigger.normalizeScroll(true); // ✅ smooth out mobile flicks
-
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.normalizeScroll(true); // fixes mobile momentum issues
 
     panels.forEach((panel, index) => {
       if (index > 0) {
