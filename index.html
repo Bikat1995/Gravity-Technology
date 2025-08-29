@@ -95,15 +95,30 @@
     </style>
   </head>
   <body class="antialiased text-slate-900 selection:bg-primary-200 selection:text-slate-900">
+    <!-- Preloader Overlay -->
+    <div id="preloader">
+      <img src="Gravity Logo.png" alt="Loading..." class="preloader-logo">
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+          const preloader = document.getElementById('preloader');
+          preloader.style.opacity = 0; // fade out
+
+          setTimeout(() => {
+            preloader.style.display = 'none'; // remove after fade
+          }, 500); // matches CSS transition
+        });
+    </script>
+
   <!-- HERO + NAVBAR -->
   <header id="hero" class="hero-bg relative h-screen">
     <!-- Gradient overlay -->
     <div class="absolute inset-0 h-screen w-full bg-cover bg-center" style="background-image: url('./fonts/image_fx_\ \(43\).jpg');"></div>
 <!-- NAVBAR -->
-<nav id="main-nav"
-    class="absolute top-2 w-[90%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between 
-           transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3
-           opacity-0 translate-y-[-20px]">
+  <nav id="main-nav"
+      class="absolute top-2 w-[90%] left-1/2 -translate-x-1/2 rounded-t-xl px-6 z-50 h-16 flex items-center justify-between 
+            transition-colors duration-500 ease-in-out bg-transparent backdrop-blur-sm md:fixed md:top-3
+            opacity-0 translate-y-[-20px]">
     <div class="max-w-6xl mx-auto w-full flex items-center justify-between relative">
         
         <!-- Logo -->
@@ -126,26 +141,23 @@
             <a href="#Contact" class="nav-link">Contact</a>
         </div>
         <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.getElementById("main-nav");
-  const logo = document.getElementById("logo");
-  const navLinks = document.getElementById("nav-links");
+          document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.getElementById("main-nav");
+            const logo = document.getElementById("logo");
+            const navLinks = document.getElementById("nav-links");
 
-  setTimeout(() => {
-    nav.classList.add("opacity-100", "translate-y-0");
-    nav.classList.remove("opacity-0", "translate-y-[-20px]");
+            setTimeout(() => {
+              nav.classList.add("opacity-100", "translate-y-0");
+              nav.classList.remove("opacity-0", "translate-y-[-20px]");
 
-    logo.classList.add("opacity-100", "scale-100");
-    logo.classList.remove("opacity-0", "scale-90");
+              logo.classList.add("opacity-100", "scale-100");
+              logo.classList.remove("opacity-0", "scale-90");
 
-    navLinks.classList.add("opacity-100", "translate-y-0");
-    navLinks.classList.remove("opacity-0", "translate-y-[-10px]");
-  }, 200); // delay for smooth effect
-});
-</script>
-
-
-
+              navLinks.classList.add("opacity-100", "translate-y-0");
+              navLinks.classList.remove("opacity-0", "translate-y-[-10px]");
+            }, 200); // delay for smooth effect
+          });
+          </script>
                     <!-- Mobile Menu Button -->
                 <button id="mobile-toggle"
                     class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-white relative z-[50] cursor-pointer">
@@ -503,88 +515,166 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Services Grid -->
     <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      
-      <!-- Card 1 -->
-      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-right">
-        <!-- Floating Icon -->
-        <div class="absolute -top-4 -left-4 bg-purple-200 p-3 rounded-xl shadow">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
 
-        <h3 class="font-bold text-2xl text-gray-900 mt-6">Software Development</h3>
-        <p class="mt-2 text-gray-600 text-lg">
-          Comprehensive software solutions tailored to streamline operations and maximize business productivity.
-        </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
-          Request a quote →
-        </a>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-left">
-        <!-- Floating Icon -->
-        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
-          <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"\>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /\>
-          </svg>
-        </div>
-
-        <h3 class="font-bold text-2xl text-gray-900 mt-6">Networking</h3>
-        <p class="mt-2 text-gray-600 text-lg">
-          Secure and reliable office network setup that streamlines communication and keeps your business connected.
-        </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
-          Request a quote →
-        </a>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-up">
-        <!-- Floating Icon -->
-        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12V4a2 2 0 012-2h10a2 2 0 012 2v8M5 12v8a2 2 0 002 2h10a2 2 0 002-2v-8m-4-8v8m-2-8v8m4-8v8" />
-          </svg>
-        </div>
-
-        <h3 class="font-bold text-2xl text-gray-900 mt-6">Website Hosting</h3>
-        <p class="mt-2 text-gray-600 text-lg">
-          Reliable, secure, and high-performance hosting solutions to keep your website running smoothly and efficiently.
-        </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
-          Request a quote →
-        </a>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-down">
-        <!-- Floating Icon -->
-        <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z" />
-          </svg>
-        </div>
-
-        <h3 class="font-bold text-2xl text-gray-900 mt-6">Hardware Setup</h3>
-        <p class="mt-2 text-gray-600 text-lg">
-          Reliable setup for your office and IT infrastructure, ensuring your team has the tools they need to work efficiently and securely.
-        </p>
-        <a href="#Contact" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline">
-          Request a quote →
-        </a>
-      </div>
-    </div>
-
-    <!-- CTA Button -->
-    <div class="mt-12 flex justify-center reveal animate-fade-in-up">
-      <a href="#Contact" class="px-6 py-3 bg-purple-500 text-white rounded-lg font-medium shadow hover:bg-purple-600 transition">
-        Contact Us →
-      </a>
-    </div>
+<!-- Card 1 -->
+<div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-right">
+  <!-- Floating Icon -->
+  <div class="absolute -top-4 -left-4 bg-purple-200 p-3 rounded-xl shadow">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    </svg>
   </div>
+
+  <h3 class="font-bold text-2xl text-gray-900 mt-6">Software Development</h3>
+  <p class="mt-2 text-gray-600 text-lg">
+    Comprehensive software solutions tailored to streamline operations and maximize business productivity.
+  </p>
+  <a href="#" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline open-modal"
+     data-service="Software Development">
+    Request a quote →
+  </a>
+</div>
+
+<!-- Card 2 -->
+<div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-left">
+  <!-- Floating Icon -->
+  <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+    </svg>
+  </div>
+
+  <h3 class="font-bold text-2xl text-gray-900 mt-6">Networking</h3>
+  <p class="mt-2 text-gray-600 text-lg">
+    Secure and reliable office network setup that streamlines communication and keeps your business connected.
+  </p>
+  <a href="#" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline open-modal"
+     data-service="Networking">
+    Request a quote →
+  </a>
+</div>
+
+<!-- Card 3 -->
+<div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-up">
+  <!-- Floating Icon -->
+  <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M5 12h14M5 12V4a2 2 0 012-2h10a2 2 0 012 2v8M5 12v8a2 2 0 002 2h10a2 2 0 002-2v-8m-4-8v8m-2-8v8m4-8v8" />
+    </svg>
+  </div>
+
+  <h3 class="font-bold text-2xl text-gray-900 mt-6">Website Hosting</h3>
+  <p class="mt-2 text-gray-600 text-lg">
+    Reliable, secure, and high-performance hosting solutions to keep your website running smoothly and efficiently.
+  </p>
+  <a href="#" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline open-modal"
+     data-service="Website Hosting">
+    Request a quote →
+  </a>
+</div>
+
+<!-- Card 4 -->
+<div class="relative bg-white rounded-2xl shadow p-6 text-left reveal animate-fade-in-down">
+  <!-- Floating Icon -->
+  <div class="absolute -top-4 -left-4 bg-purple-100 p-3 rounded-xl shadow">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z" />
+    </svg>
+  </div>
+
+  <h3 class="font-bold text-2xl text-gray-900 mt-6">Hardware Setup</h3>
+  <p class="mt-2 text-gray-600 text-lg">
+    Reliable setup for your office and IT infrastructure, ensuring your team has the tools they need to work efficiently and securely.
+  </p>
+  <a href="#" class="mt-4 inline-block text-purple-500 text-lg font-medium hover:underline open-modal"
+     data-service="Hardware Setup">
+    Request a quote →
+  </a>
+</div>
+  </div>
+<!-- CTA Button -->
+<div class="w-full flex justify-center mt-12 animate-fade-in-up">
+  <a href="#Contact"
+     class="px-6 py-3 bg-purple-500 text-white rounded-lg font-medium shadow hover:bg-purple-600 transition">
+    Contact Us →
+  </a>
+</div>
 </section>
+
+
+<!-- ================= POPUP MODAL ================= -->
+<div id="quoteModal"
+  class="fixed inset-0 hidden bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md relative mx-4">
+    <!-- Close Button -->
+    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+    
+    <h2 id="modalTitle" class="text-2xl font-bold text-gray-900 mb-4">Request a Quote</h2>
+    
+    <form class="space-y-4">
+      <input type="hidden" id="serviceInput" name="service">
+      
+      <div>
+        <label class="block text-gray-700">Name</label>
+        <input type="text" name="name"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          required>
+      </div>
+      <div>
+        <label class="block text-gray-700">Email</label>
+        <input type="email" name="email"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          required>
+      </div>
+      <div>
+        <label class="block text-gray-700">Phone Number</label>
+        <input type="tel" name="phone"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          required>
+      </div>
+      <button type="submit"
+        class="w-full bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700 transition">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+  const modal = document.getElementById("quoteModal");
+  const openBtns = document.querySelectorAll(".open-modal");
+  const closeBtn = document.getElementById("closeModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const serviceInput = document.getElementById("serviceInput");
+
+  openBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const serviceName = btn.getAttribute("data-service");
+      modalTitle.textContent = "Request a Quote for " + serviceName;
+      serviceInput.value = serviceName;
+      modal.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden"); // ❌ disable background scroll
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden"); // ✅ enable scroll again
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden"); // ✅ enable scroll again
+    }
+  });
+</script>
 
     <!-- WORKS / PROJECTS -->
 <section id="Works" class="bg-slate-50">
@@ -599,7 +689,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 1 -->
     <div class="sticky top-0 z-10 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center justify-center bg-[#3c1361] w-full h-full bg-white p-8 min-h-[100vh]">
+      <div class="flex flex-col md:flex-row items-center justify-center bg-[#177f64] w-full h-full bg-white p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
@@ -608,11 +698,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <!-- Content -->
         <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
-          <h4 class="text-4xl font-semibold text-white">Real Estate Website</h4>
+          <h4 class="text-4xl font-semibold text-white">Real Estate Marketing Website</h4>
           <p class="mt-6 text-white leading-relaxed text-lg">
-            A comprehensive platform for converting domains into fully functional content websites, tailored for the real estate industry.
+            A modern platform to showcase properties, attract buyers, and streamline real estate marketing with ease.
           </p>
-          <button class="mt-8 bg-white text[#3c1361]  py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+          <button
+            onclick="window.open('https://dynamicrealestatemarketing.com/', '_blank')" 
+            class="mt-8 bg-white text-[#177f64]  py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
             View Project
           </button>
         </div>
@@ -634,7 +726,57 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="mt-6 text-white leading-relaxed text-lg">
             A robust platform designed for insurance brokers to manage policies, claims, and customer interactions efficiently.
           </p>
-          <button class="mt-8 bg-[#6EC1E4] text-white py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+          <button 
+            onclick="window.open('https://bminsurancebrokers.com/', '_blank')" 
+            class="mt-8 bg-[#6EC1E4] text-white py-3 px-10 rounded-xl font-medium hover:shadow-lg transition w-full md:w-auto">
+            View Project
+          </button>
+        </div>
+      </div>
+    </div>
+
+        <!-- Card 2 -->
+    <div class="sticky top-0 z-20 animate-section min-h-screen flex items-center">
+      <div class="flex flex-col md:flex-row items-center bg-[#212121] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
+        
+        <!-- Image -->
+        <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="tour.png" alt="Insurance Brokers Website" />
+        </div>
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
+          <h4 class="text-4xl font-semibold text-white">Tour and Travel Website</h4>
+          <p class="mt-6 text-white leading-relaxed text-lg">
+            A vibrant platform that helps travelers explore destinations, book tours, and plan trips effortlessly.
+          </p>
+          <button
+            onclick="window.open('https://overlandethiopiatours.com/', '_blank')"
+           class="mt-8 bg-white text-[#212121] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+            View Project
+          </button>
+        </div>
+      </div>
+    </div>
+
+        <!-- Card 2 -->
+    <div class="sticky top-0 z-20 animate-section min-h-screen flex items-center">
+      <div class="flex flex-col md:flex-row items-center bg-[#3c1361] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
+        
+        <!-- Image -->
+        <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="Re_not.png" alt="Insurance Brokers Website" />
+        </div>
+
+        <!-- Content -->
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
+          <h4 class="text-4xl font-semibold text-white">Real Estate Website</h4>
+          <p class="mt-6 text-white leading-relaxed text-lg">
+            A comprehensive platform for converting domains into fully functional content websites, tailored for the real estate industry.
+          </p>
+          <button 
+            onclick="window.open('https://addisempirerealestate.com/', '_blank')"
+          class="mt-8 bg-white text[#3c1361] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
             View Project
           </button>
         </div>
@@ -643,20 +785,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- Card 3 -->
     <div class="sticky top-0 z-30 animate-section min-h-screen flex items-center">
-      <div class="flex flex-col md:flex-row items-center bg-[#F4A300] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
+      <div class="flex flex-col md:flex-row items-center bg-[#3B5D1C] justify-center w-full h-full bg-white p-8 min-h-[100vh]">
         
         <!-- Image -->
         <div class="w-full md:w-1/2 h-full flex items-center justify-center">
-          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="crm.png" alt="Custom CRM Platform" />
+          <img class="w-4/5 h-4/5 object-cover rounded-xl" src="agro.png" alt="Custom CRM Platform" />
         </div>
 
         <!-- Content -->
         <div class="w-full md:w-1/2 p-10 flex flex-col justify-center h-full">
-          <h4 class="text-4xl font-semibold text-white">Custom CRM Platform</h4>
+          <h4 class="text-4xl font-semibold text-white">Agro Industry Website</h4>
           <p class="mt-6 text-white leading-relaxed text-lg">
-            A powerful CRM solution enabling businesses to manage leads, track customer interactions, automate workflows, and gain actionable insights.
+            Driving the future of agriculture through technology, insights, and sustainable practices connecting farmers, producers, and businesses across the agro value chain.
           </p>
-          <button class="mt-8 bg-[#333333] text-white py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+          <button
+           onclick="window.open('https://eastsideagroindustry.com/', '_blank')" 
+           class="mt-8 bg-white text-[#6f4e37] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
             View Project
           </button>
         </div>
@@ -779,44 +923,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="pin-container sticky top-0 h-screen overflow-hidden">
       <div id="horizontal-scroll-container" class="relative h-full w-full">
-        <div class="flex-shrink-0 absolute">
+        <div class="flex-shrink-0 absolute inset-0 p-4 pt-32 sm:pt-24 md:pt-16">
           <div class="panel-content gradient-bg-1 rounded-none shadow-none">
-            <div class="description">
-              <h2 class="text-4xl font-bold text-gray-200">ERP Website</h2>
-              <p class="mt-6 text-gray-200 leading-relaxed text-lg">
-                All-in-one ERP solution for businesses of all sizes with comprehensive features.
+            <div class="description max-w-full sm:max-w-lg">
+              <h2 class="text-4xl font-bold text-gray-200">School Management System Website</h2>
+              <p class="mt-6 text-gray-200 leading-snug text-lg">
+                Manage all aspects of school administration efficiently.
               </p>
-              <ul class="mt-6 text-lg text-gray-200 list-disc list-inside pl-4">
-                <li class="mb-2">Customizable dashboards for every department</li>
-                <li class="mb-2">Real-time analytics and reporting</li>
-                <li class="mb-2">Scalable architecture that grows with your business</li>
-                <li>Seamless integration with existing systems</li>
+              <ul class="mt-6 text-gray-200 text-lg list-disc list-inside pl-4 space-y-1">
+                <li>Student & staff management</li>
+                <li>Attendance tracking</li>
+                <li>Timetable & exams</li>
+                <li>Teacher-student-parent communication</li>
               </ul>
-              <button class="mt-8 bg-gray-200 text-[#1f272c] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
-                Learn More
+              <button 
+              onclick="window.open('https://asquala.gravity.et/', '_blank')" 
+              class="mt-8 bg-white text-[#4B5563] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                View Product
               </button>
             </div>
-            <div class="image-spot">
-              <img src="erp.png" alt="">
+
+
+            <!-- Image spot stays here -->
+            <div class="image-spot mt-5 md:mt-0">
+              <img src="Sc.png" alt="ERP Website" class="max-w-full h-auto">
             </div>
           </div>
         </div>
-
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-2 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-yellow-100">CRM Website</h2>
-              <p class="mt-6 text-yellow-100 leading-relaxed text-lg">
+              <h2 class="text-4xl font-bold text-white">CRM Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
                 Boost customer relationships and retention with our powerful CRM platform.
               </p>
-              <ul class="mt-6 text-lg text-yellow-100 list-disc list-inside pl-4">
+              <ul class="mt-6 text-lg text-white list-disc list-inside pl-4">
                 <li class="mb-2">Lead tracking and automation</li>
                 <li class="mb-2">Email & SMS marketing campaigns</li>
                 <li class="mb-2">Integrated customer support system</li>
                 <li>Customer behavior analytics</li>
               </ul>
-              <button class="mt-8 bg-yellow-100 text-green-600 py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
-                Learn More
+              <button 
+              onclick="window.open('https://savanna.gravity.et/', '_blank')" 
+              class="mt-8 bg-white text-[#0a0a0a] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                View Product
               </button>
             </div>
             <div class="image-spot">
@@ -828,45 +978,48 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-3 rounded-none shadow-none">
             <div class="description">
-              <h2 class="text-4xl font-bold text-blue-300">AI Tools Website</h2>
-              <p class="mt-6 text-blue-300 leading-relaxed text-lg">
-                Smart AI-powered productivity suite that transforms how you work.
+              <h2 class="text-4xl font-bold text-white">Attendance Management System Website</h2>
+              <p class="mt-6 text-white leading-relaxed text-lg">
+                Simplify tracking and managing attendance for students and staff.
               </p>
-              <ul class="mt-6 text-blue-300 text-lg list-disc list-inside pl-4">
-                <li class="mb-2">AI text summarization for documents</li>
-                <li class="mb-2">Document auto-tagging and organization</li>
-                <li class="mb-2">Predictive insights and recommendations</li>
-                <li>Natural language processing capabilities</li>
+              <ul class="mt-6 text-white text-lg list-disc list-inside pl-4">
+                <li class="mb-2">Real-time attendance tracking</li>
+                <li class="mb-2">Automated reports and notifications</li>
+                <li>Easy integration with school systems</li>
               </ul>
-              <button class="mt-8 bg-blue-300 text-[#00072D] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
-                Learn More
+              <button 
+              onclick="window.open('https://care.sync.gravity.et/', '_blank')" 
+              class="mt-8 bg-white text-blue-400 py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                View Product
               </button>
             </div>
             <div class="image-spot">
-              <img src="Dev.png" alt="">
+              <img src="As.png" alt="">
             </div>
           </div>
         </div>
 
         <div class="flex-shrink-0 absolute">
           <div class="panel-content gradient-bg-4 rounded-none shadow-none">
-            <div class="description">
-              <h2 class="text-4xl font-bold text-green-200">DevOps Website</h2>
-              <p class="mt-6 text-green-200 leading-relaxed text-lg">
-                Continuous integration and deployment toolkit for modern development teams.
-              </p>
-              <ul class="mt-6 text-lg text-green-200 list-disc list-inside pl-4">
-                <li class="mb-2">Cloud-native deployment pipelines</li>
-                <li class="mb-2">Zero-downtime deployment strategies</li>
-                <li class="mb-2">Advanced monitoring and alert systems</li>
-                <li>Automated testing and quality assurance</li>
-              </ul>
-              <button class="mt-8 bg-green-200 text-[#1d4ed8] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
-                Learn More
+            <div class="description">>
+                <h2 class="text-4xl font-bold text-white">Appointment Scheduling Website</h2>
+                <p class="mt-6 text-white leading-relaxed text-lg">
+                  Streamline booking and managing appointments with ease.
+                </p>
+                <ul class="mt-6 text-lg text-white list-disc list-inside pl-4">
+                  <li class="mb-2">Online booking and calendar integration</li>
+                  <li class="mb-2">Automated reminders and notifications</li>
+                  <li class="mb-2">Staff and client management</li>
+                  <li>Real-time availability tracking</li>
+                </ul>
+              <button 
+              onclick="window.open('https://eastsideagroindustry.com/', '_blank')" 
+             class="mt-8 bg-white text-[#2d4380] py-3 px-10 rounded-xl font-medium hover:shadow-lg transition">
+                View Product
               </button>
             </div>
             <div class="image-spot">
-              <img src="Ai_tools.png" alt="">
+              <img src="Aps.png" alt="">
             </div>
           </div>
         </div>
@@ -875,16 +1028,16 @@ document.addEventListener("DOMContentLoaded", () => {
   </section>
     <style>
     .gradient-bg-1 {
-      background: #1f272c;
+      background: #4B5563;
     }
     .gradient-bg-2 {
-      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      background: #0a0a0a;
     }
     .gradient-bg-3 {
-      background: #00072D;
+      background: rgb(58 129 245);
     }
     .gradient-bg-4 {
-      background: #1d4ed8;
+      background: #2d4380;
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -985,34 +1138,37 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Update ScrollTrigger end value based on usable height
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".pin-container",
-          pin: true,
-          scrub: 1,
-          start: "top top",
-          end: () => `+=${totalPanels * usableHeight * 1.5}`, // Adjusted scroll distance
-        },
-      });
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".pin-container",
+    pin: true,
+    scrub: 0.2,            // ✅ fast catch-up (not laggy)
+    anticipatePin: 1,      // ✅ smooth pin release
+    start: "top top",
+    end: () => `+=${totalPanels * usableHeight}`,
+    invalidateOnRefresh: true,
+  },
+});
 
-      // Animate each panel to slide in from the right, hiding the previous one after completion
-      panels.forEach((panel, index) => {
-        if (index > 0) {
-          tl.to(panel, {
-            x: 0, // Slide in from the right
-            visibility: "visible", // Make visible
-            duration: 1,
-            ease: "power2.out"
-          })
-          .set(panels[index - 1], {
-            visibility: "hidden", // Hide previous panel after new panel is fully in
-            x: -panelWidth // Move it off-screen to the left
-          });
-        }
-      });
+// Animate panels
+panels.forEach((panel, index) => {
+  if (index > 0) {
+    tl.to(panel, {
+      x: 0,
+      visibility: "visible",
+      duration: 1,
+      ease: "power2.out"
+    })
+    .set(panels[index - 1], {
+      visibility: "hidden",
+      x: -panelWidth
+    });
+  }
+});
 
-      // Buffer for smooth end
-      tl.to({}, { duration: 0.5 });
+// Add a buffer at the end so it doesn’t "lock"
+tl.to({}, { duration: 1.5 });
+
 
       // Handle window resize to update height dynamically
       window.addEventListener("resize", () => {
@@ -1267,10 +1423,10 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- FOOTER -->
 <section class="bg-white border-t border-slate-200 animate-section from-left reveal fade-left delay-200">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 reveal fade-left delay-200">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
       
       <!-- Left -->
-      <div class="md:col-span-2">
+      <div class="md:col-span-2 flex flex-col items-center md:items-start">
         <img src="Gravity Logo.png" alt="Logo" class="h-12 w-auto object-contain mb-4">
         <p class="text-slate-600 text-lg max-w-md">
           Connecting Hearts, Through Technology..
@@ -1293,19 +1449,21 @@ document.addEventListener("DOMContentLoaded", () => {
       <div>
         <h4 class="text-slate-900 text-xl font-bold">Contact Us</h4>
         <ul class="mt-4 space-y-3 text-sm text-slate-600">
-          <li class="flex items-center gap-3">
+          <li class="flex items-center justify-center md:justify-start gap-3">
             <!-- Mail Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <a href="mailto:info@gravityet.com" class="hover:text-purple-500">info@gravityet.com</a>
           </li>
-          <li class="flex items-center gap-3">
+          <li class="flex items-center justify-center md:justify-start gap-3">
             <!-- Phone Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.14 1.04.38 2.04.72 3a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.96.34 1.96.58 3 .72A2 2 0 0 1 22 16.92z"/></svg>
             <a href="tel:+251910446666" class="hover:text-purple-500">+251 910 446 666</a>
           </li>
-          <li class="flex items-start gap-3">
+          <li class="flex flex-col items-center md:items-start gap-3">
             <!-- Location Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2a10 10 0 0 0-10 10c0 7 10 16 10 16s10-9 10-16a10 10 0 0 0-10-10z"/><circle cx="12" cy="12" r="4"/></svg>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2a10 10 0 0 0-10 10c0 7 10 16 10 16s10-9 10-16a10 10 0 0 0-10-10z"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
             <span>Bisrate Gabriel, next to Adot Multiplex<br>Shimeket commercial center, 7th floor 708</span>
           </li>
         </ul>
@@ -1313,14 +1471,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     </div>
 
-<!-- Footer Bottom Row (inside your footer/section as before) -->
-<div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-200 pt-4 text-[12px] text-slate-500">
-  <div>© 2025 Gravity Technology. All Rights Reserved.</div>
-  <div class="flex items-center gap-3 mt-2 sm:mt-0">
-    <button type="button" onclick="openModal('privacyModal')" class="hover:text-slate-700">Privacy Policy</button>
-    <button type="button" onclick="openModal('termsModal')" class="hover:text-slate-700">Terms of Service</button>
-  </div>
-</div>
+    <!-- Footer Bottom Row -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-200 pt-4 text-[12px] text-slate-500 text-center md:text-left">
+      <div>© 2025 Gravity Technology. All Rights Reserved.</div>
+      <div class="flex items-center gap-3 mt-2 sm:mt-0">
+        <button type="button" onclick="openModal('privacyModal')" class="hover:text-slate-700">Privacy Policy</button>
+        <button type="button" onclick="openModal('termsModal')" class="hover:text-slate-700">Terms of Service</button>
+      </div>
+    </div>
 
 <!-- Put this script ONCE (replace any smaller modal script you have) -->
 <script>
@@ -1549,72 +1707,6 @@ document.addEventListener("DOMContentLoaded", () => {
         sections.forEach(section => observer.observe(section));
       });
 
-      // Testimonial carousel
-      const testimonials = [
-        {
-          company: 'ATLASSSIAN',
-          quote: 'The best payment solution I’ve ever used. Secure, efficient, and integrates perfectly with all my financial tools. Highly recommend!',
-          name: 'Hitesh Dorset',
-          role: 'Finance Consultant',
-          avatar: 'https://i.pravatar.cc/40?img=12'
-        },
-        {
-          company: 'HUBSPOT',
-          quote: 'ZenPay transformed our payment process, making it faster and more reliable. A game-changer for our business!',
-          name: 'Sarah Miller',
-          role: 'CFO',
-          avatar: 'https://i.pravatar.cc/40?img=14'
-        },
-        {
-          company: 'ZENDESK',
-          quote: 'Seamless multi-currency support and an intuitive interface. ZenPay is our go-to for global transactions.',
-          name: 'James Carter',
-          role: 'Operations Manager',
-          avatar: 'https://i.pravatar.cc/40?img=16'
-        }
-      ];
-
-      const testimonialCarousel = document.getElementById('testimonial-carousel');
-      const prevButton = document.getElementById('prev-testimonial');
-      const nextButton = document.getElementById('next-testimonial');
-      let currentSlide = 0;
-
-      function renderTestimonials() {
-        testimonialCarousel.innerHTML = testimonials.map((testimonial, index) => `
-          <div class="testimonial-slide ${index === 0 ? 'active' : ''} animate-section from-left">
-            <div class="text-xs text-slate-500 tracking-wider">${testimonial.company}</div>
-            <p class="mt-3 text-slate-900 text-lg sm:text-xl font-medium">${testimonial.quote}</p>
-            <div class="mt-4 flex items-center gap-3">
-              <img class="h-10 w-10 rounded-full" src="${testimonial.avatar}" alt="" />
-              <div>
-                <div class="text-slate-900 text-sm font-medium animate-section">${testimonial.name}</div>
-                <div class="text-slate-500 text-xs animate-section from-left">${testimonial.role}</div>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-
-      function showSlide(index) {
-        const slides = testimonialCarousel.querySelectorAll('.testimonial-slide');
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-      }
-
-      prevButton.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
-        showSlide(currentSlide);
-      });
-
-      nextButton.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % testimonials.length;
-        showSlide(currentSlide);
-      });
-
-      // Initialize carousel
-      renderTestimonials();
-      showSlide(currentSlide);
     </script>
   
   </body>
